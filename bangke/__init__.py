@@ -17,11 +17,11 @@ class Config:
 
     def setup_config(self):
         count = 1
-        #self.clear_screen
+        self.clear_screen
 
         # check requirements & install
-        #self.check_requirements()
-        #self.clear_screen
+        self.check_requirements()
+        self.clear_screen
 
         # check if the user config file exists
         if os.path.exists("config.txt"):
