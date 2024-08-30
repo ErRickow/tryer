@@ -20,4 +20,4 @@ class Configs(
 #    VcBotConfig,
     SudoUsersConfig
     ):
-    DVLIST = BOTDV + OTHERDV + USERDV + PMPERMITDV + AFKDV + HEROKUDV + VCBOTDV + SUDOUSERSDV 
+    DVLIST = BOTDV + OTHERDV + USERDV + SUDOUSERSDV 
