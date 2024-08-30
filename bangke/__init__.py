@@ -11,10 +11,11 @@ class Config:
     pass
 
         # check if the user config file exists
-        if os.path.exists("config.txt"):
-            print("config.txt file exists: Yes\n\n")
-            with open("config.txt") as f:
-                content = [x for x in f.read().split("\n") if x not in ("\n", "")]
+  if os.path.exists("config.txt"):
+    
+    print("config.txt file exists: Yes\n\n")
+    with open("config.txt") as f:
+      content = [x for x in f.read().split("\n") if x not in ("\n", "")]
 
             # set text file config values
             print(Colors.block + "Setting configuration values.\n\n" + Colors.reset)
