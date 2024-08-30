@@ -10,6 +10,11 @@ class Config:
     """This class generates the configs """
     pass
 
+
+def isLocalHost():
+    """Check if it is localhost"""
+    return os.path.exists("config.txt")
+
         # check if the user config file exists
   if os.path.exists("config.txt"):
     print("config.txt file exists: Yes\n\n")
