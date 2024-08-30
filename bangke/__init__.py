@@ -76,4 +76,4 @@ else:
 # default import
 from bangke.userbot import app
 bot = app.bot
-from main.core.filters import gen
+from bangke.core.filters import gen
