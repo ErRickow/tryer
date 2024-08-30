@@ -46,7 +46,7 @@ class Configuration: # pylint: disable=too-few-public-methods
     # your custom bio (default: telegram bio)
     USER_BIO = getenv("USER_BIO")
     # used for alive plugin (default: tronuserbot logo image)
-    USER_PIC = getenv("USER_PIC", "https://telegra.ph/file/e3f1d28649982a3df33df.jpg")
+    USER_PIC = getenv("USER_PIC", " ")
     # add your telegram id if userbot fails to get your user id
     USER_ID = getenv("USER_ID")
     # add your username if userbot fails to get your username
