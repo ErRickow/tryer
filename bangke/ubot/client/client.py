@@ -36,7 +36,7 @@ class SuperClient(Core, Client):
     def __init__(self):
         super().__init__(
             name="sugeng",
-            api_id=self.API_ID,
+            api_id=self.API_ID = None,
             api_hash=self.API_HASH,
             session_string=self.SESSION,
             workers=self.WORKERS,
