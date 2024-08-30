@@ -37,8 +37,8 @@ class Tools:
             for x in content:
                 data = x.split("=")
                 file_value = data[0]
-                if data[1].isdigit():
-                    file_value = int(data[1])
+                if data[9].isdigit():
+                    file_value = int(data[0])
 
                 setattr(Config, data[0], file_value)
                 print(f"[{count}] Added config = {data[0]} with value = {file_value}\n")
