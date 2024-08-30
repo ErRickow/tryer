@@ -3,7 +3,7 @@ import logging
 import platform
 
 from requests.exceptions import ConnectionError
-from main import Config
+from bangke import Config
 from telegraph import Telegraph
 from pyrogram import __version__ as pyrogram_version
 from bangke.core.methods import Methods
