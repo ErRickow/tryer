@@ -45,7 +45,7 @@ class Bot(Core, Client):
 
 
         async def start_assistant(self):
-        """ this function starts the pyrogram bot client. """
+       # """ this function starts the pyrogram bot client. """
 
         try:
             if not self:
