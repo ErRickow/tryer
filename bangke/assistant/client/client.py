@@ -38,8 +38,8 @@ class Bot(Core, Client):
         self.pic = self.download_media(self.me.photo.big_file_id, dp_name) if self.me.photo else None
         self.is_bot = True
         self.stop()
-        except FloodWait as e:
-            print(e)
+      #  except FloodWait as e:
+       #     print(e)
 
         self.__class__.__module__ = "pyrogram.client"
 
