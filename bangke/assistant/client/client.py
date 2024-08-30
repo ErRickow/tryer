@@ -47,7 +47,7 @@ class Bot(Core, Client):
         async def start_assistant(self):
        # """ this function starts the pyrogram bot client. """
 
-        try:
+          try:
             if not self:
                 raise Exception("The userbot client is missing.")
                 quit(0)
