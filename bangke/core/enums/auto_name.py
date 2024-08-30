@@ -6,4 +6,4 @@ class AutoName(Enum):
         return self.lower()
 
     def __repr__(self):
-        return f"main.core.enums.{self}"
+        return f"bangke.core.enums.{self}"
