@@ -24,14 +24,14 @@ class Bot(Core, Client):
         api_hash=self.API_HASH,
         bot_token=self.BOT_TOKEN
     )
-        try:
-            self.start()
-            self.me = self.get_chat("me")
-            self.id = self.me.id
-            self.dc_id = self.me.dc_id
-            self.name = self.me.first_name
-            self.username = f"@{self.me.username}"
-            self.bio = self.me.bio if self.me.bio else ""
+    try:
+      self.start()
+      self.me = self.get_chat("me")
+      self.id = self.me.id
+      self.dc_id = self.me.dc_id
+      self.name = self.me.first_name
+      self.username = f"@{self.me.username}"
+      self.bio = self.me.bio if self.me.bio else ""
             dp_name = f"dp_{self.id}.jpg"
             dp_path = f"./downloads/{dp_name}"
             if not os.path.exists(dp_path):
