@@ -9,6 +9,8 @@ from config import Configuration
 class Config:
     """This class generates the configs """
     pass
+  
+class Tools:
 
 
 def isLocalHost():
