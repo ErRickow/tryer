@@ -9,13 +9,13 @@ from config import Configuration
 class Config:
     """This class generates the configs """
     pass
-  
-class Tools:
 
 
 def isLocalHost():
     """Check if it is localhost"""
     return os.path.exists("config.txt")
+    
+class Tools:
 
         # check if the user config file exists
     def setup_config(self):
