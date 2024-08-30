@@ -20,7 +20,7 @@ from pyrogram.types import (
 )
 
 from .types.superparser import SuperParser
-from main.core.enums import (
+from bangke.core.enums import (
     UserType,
     ChatType,
     SudoType
