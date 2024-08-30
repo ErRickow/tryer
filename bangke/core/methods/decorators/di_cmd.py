@@ -7,8 +7,8 @@ from typing import (
     Callable
 )
 
-from main.core.enums import UserType
-from main.core.filters import gen
+from bangke.core.enums import UserType
+from bangke.core.filters import gen
 
 
 
