@@ -80,4 +80,4 @@ class Bot(Core, Client):
                     print("Added bot commands.\n")
             else:
                 print("Assistant is not activated.\n")
-             #   except Exception:
+            
