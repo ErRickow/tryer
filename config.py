@@ -32,7 +32,7 @@ class Configuration: # pylint: disable=too-few-public-methods
 
 # ---- pmpermit ----
     # add True to enable pmpermit (optional)
-    PMPERMIT = getenv("PMPERMIT", None)
+#    PMPERMIT = getenv("PMPERMIT", None)
     # add custom pmpermit pic (optional)
     PMPERMIT_PIC = getenv("PMPERMIT_PIC", "https://telegra.ph/file/eb4d05653b1e6b4798cbb.jpg")
     # add custom pmpermit warn text (optional)
