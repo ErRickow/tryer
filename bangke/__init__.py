@@ -36,7 +36,7 @@ class Tools:
             print(Colors.block + "Setting configuration values.\n\n" + Colors.reset)
             for x in content:
                 data = x.split("=")
-                file_value = data[1]
+                file_value = data[0]
                 if data[1].isdigit():
                     file_value = int(data[1])
 
