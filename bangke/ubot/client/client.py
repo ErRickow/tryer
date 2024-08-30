@@ -35,7 +35,7 @@ class SuperClient(Core, Client):
     """ Userbot (tron) """
     def __init__(self):
         super().__init__(
-            name="erubot",
+            name="sugeng",
             api_id=self.API_ID,
             api_hash=self.API_HASH,
             session_string=self.SESSION,
