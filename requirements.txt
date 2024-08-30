@@ -8,7 +8,6 @@ gTTS
 git-python
 hachoir
 heroku3
-moviepy
 pySmartDL
 pyfy
 pyrotron # https://github.com/TronUb/PyroTron
