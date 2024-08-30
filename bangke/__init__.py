@@ -37,7 +37,7 @@ class Tools:
             for x in content:
                 data = x.split("=")
                 file_value = data[0]
-                if data[9].isdigit():
+                if data[0].isdigit():
                     file_value = int(data[0])
 
                 setattr(Config, data[0], file_value)
