@@ -16,6 +16,14 @@ def isLocalHost():
     return os.path.exists("config.txt")
     
 class Tools:
+    """Use it for installing the required packages """
+    device = platform.uname()[0].lower()
+    is_linux = device=="linux"
+    is_windows = device=="windows"
+
+    @property
+    def clear_screen(self):
+        os.system("clear" if self.is_linux else "cls")
 
         # check if the user config file exists
     def setup_config(self):
