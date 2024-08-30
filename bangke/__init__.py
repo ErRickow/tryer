@@ -62,7 +62,7 @@ def isLocalHost():
 
 
 
-
+tools = Tools()
 
 if(isLocalHost()):
     tools.setup_config()
