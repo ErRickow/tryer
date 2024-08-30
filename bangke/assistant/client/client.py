@@ -81,4 +81,4 @@ class Bot(Core, Client):
             else:
                 print("Assistant is not activated.\n")
              #   except Exception:
-             #     print(traceback.format_exc())
+             #print(traceback.format_exc())
