@@ -13,11 +13,11 @@ from .sudousersconfig import SudoUsersConfig, SUDOUSERSDV
 class Configs(
     BotConfig,
     OtherConfig,
-    PmpermitConfig,
+#    PmpermitConfig,
     UserConfig,
-    AfkConfig,
-    HerokuConfig,
-    VcBotConfig,
+#    AfkConfig,
+#    HerokuConfig,
+#    VcBotConfig,
     SudoUsersConfig
     ):
     DVLIST = BOTDV + OTHERDV + USERDV + PMPERMITDV + AFKDV + HEROKUDV + VCBOTDV + SUDOUSERSDV 
