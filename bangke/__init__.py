@@ -60,14 +60,14 @@ class Tools:
 
         clear = input(f"{Colors.block}Should I clear the screen ?{Colors.reset} (Y/N): ")
         if (not clear) or (clear and clear.upper() == "Y"):
-           # self.clear_screen
+            self.clear_screen
 
 
 
-           tools = Tools()
+tools = Tools()
 
 if(isLocalHost()):
-    self.setup_config()
+    tools.setup_config()
 else:
     print("Setting the Non-LocalHost setup ... !")
     for attr in dir(Configuration):
