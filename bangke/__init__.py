@@ -67,7 +67,7 @@ class Tools:
            tools = Tools()
 
 if(isLocalHost()):
-    Tools.self.setup_config()
+    self.setup_config()
 else:
     print("Setting the Non-LocalHost setup ... !")
     for attr in dir(Configuration):
