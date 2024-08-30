@@ -34,11 +34,11 @@ class Configuration: # pylint: disable=too-few-public-methods
     # add True to enable pmpermit (optional)
 #    PMPERMIT = getenv("PMPERMIT", None)
     # add custom pmpermit pic (optional)
-    PMPERMIT_PIC = getenv("PMPERMIT_PIC", "https://telegra.ph/file/eb4d05653b1e6b4798cbb.jpg")
+#    PMPERMIT_PIC = getenv("PMPERMIT_PIC", "https://telegra.ph/file/eb4d05653b1e6b4798cbb.jpg")
     # add custom pmpermit warn text (optional)
-    PMPERMIT_TEXT = getenv("PMPERMIT_TEXT", _PMPERMIT_TEXT)
+#    PMPERMIT_TEXT = getenv("PMPERMIT_TEXT", _PMPERMIT_TEXT)
     # add custom pmpermit warn limit (optional)
-    PM_LIMIT = int(getenv("PM_LIMIT", "4"))
+#    PM_LIMIT = int(getenv("PM_LIMIT", "4"))
 
 # ---- user ----
     # your custom name (default: telegram name)
