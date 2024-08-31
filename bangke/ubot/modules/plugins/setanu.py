@@ -1,6 +1,7 @@
 """ dv plugin """
 
 from pyrogram.types import Message
+from pyrogram import client
 
 from bangke import app, gen
 from bangke.core.enums import UserType
