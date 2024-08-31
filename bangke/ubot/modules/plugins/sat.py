@@ -37,7 +37,7 @@ PING_TEMPLATES = [
 """
 🔷  **Speed:** {speed} m/s
 🔷  **Uptime:** {uptime}
-🔷  **Onwer:** {owner}
+🔷  **Onwer:** {app.usermention}
 """,
 ]
 
