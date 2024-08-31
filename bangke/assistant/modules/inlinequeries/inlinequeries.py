@@ -62,11 +62,6 @@ async def create_helpmenu_articles(query=None):
 
 
 
-
-import re
-from pyrogram import filters
-from pyrogram.types import InlineQueryResultPhoto, InlineKeyboardMarkup
-
 @app.bot.on_inline_query(filters.user(app.AllUsersId))
 async def inline_result(_, inline_query):
     print(inline_query)
