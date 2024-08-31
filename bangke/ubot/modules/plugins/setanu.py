@@ -13,7 +13,7 @@ from bangke.core.enums import UserType
     usage="Set database variable.",
     disable_for=UserType.SUDO
 )
-async def setdv_handler(client: Client, m: Message):
+async def setdv_handler(client: Client, message: Message):
     """ setdv handler for dv plugin """
     if app.long() == 1:
         await app.reply_text("Give me a key & a value to set dv vars.", text_type=["mono"], delme=4)
