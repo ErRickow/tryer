@@ -13,6 +13,7 @@ from pyrogram.types import Message
 
 from bangke import app, gen
 from bangke.core.enums import UserType
+from bangke.core.manager import *
 
 @app.on_cmd(
     commands="up",
