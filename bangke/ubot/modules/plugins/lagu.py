@@ -116,7 +116,7 @@ async def deezer_handler(_, m: Message):
 
 
 @app.on_cmd(
-    commands=["ly", "lyrics"],
+    commands=["lirik", "lyrics"],
     usage="Get lyrics of a song."
 )
 async def lyrics_handler(_, m: Message):
