@@ -48,7 +48,7 @@ async def ping_template(speed: float, uptime: str, owner: str) -> str:
 StartTime = time.time()
 
 @app.on_cmd(
-    commands=["kping", "blop"],
+    commands=["ping", "p"],
     usage="Get userbot response time."
 )
 async def ping(client: Client, message: Message):
