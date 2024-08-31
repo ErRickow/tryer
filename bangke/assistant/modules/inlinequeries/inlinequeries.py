@@ -168,7 +168,7 @@ async def inline_result(_, inline_query):
                     [
                         [
                             InlineKeyboardButton(
-                                text="show message 🔐", 
+                                text="Lihat pesan 🔐", 
                                 callback_data=f"{app.id}|{user_id}|{number}"
                             )
                         ],
