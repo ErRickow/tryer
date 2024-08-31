@@ -26,8 +26,8 @@ from bangke import app, gen
 async def helpmenu_handler(_, m: Message):
     """ helpmenu handler for help plugin """
 
-    args = (m.command or m.sudo_message.command or [])[1:]
-    args_exists = True if args else None
+    args = m.command or m.sudo_message.command or []
+    args_exists = True if len(args) > 1 else None
 
     try:
         if not args_exists:
@@ -37,11 +37,12 @@ async def helpmenu_handler(_, m: Message):
                 "#helpmenu"
             )
             if result:
-                await m.delete()
+                await m.edit_text("")
                 info = await app.send_inline_bot_result(
                     m.chat.id,
                     query_id=result.query_id,
                     result_id=result.results[0].id,
+                    input_message_content=InputTextMessageContent("Your help menu here"),
                     disable_notification=True,
                 )
 
@@ -53,14 +54,14 @@ async def helpmenu_handler(_, m: Message):
                 )
         elif args_exists:
 
-            module_help = await app.PluginData(args[0])
+            module_help = await app.PluginData(args[1])
             if not module_help:
                 await app.send_edit(
                     f"Invalid plugin name specified, use {app.Trigger()[0]}uplugs to get list of plugins",
                     delme=3
                 )
             else:
-                await app.send_edit(f"MODULE: {args[0]}\n\n" + "".join(module_help))
+                await app.send_edit(f"MODULE: {args[1]}\n\n" + "".join(module_help))
         else:
             await app.send_edit("Try again later !", text_type=["mono"], delme=3)
     except BotInlineDisabled:
