@@ -13,7 +13,7 @@ from pyrogram.types import (
     WebAppInfo
 )
 
-from bangke.userbot.client import app
+from bangke.ubot.client import app
 from telegraph.exceptions import RetryAfterError
 
 
