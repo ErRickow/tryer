@@ -41,6 +41,8 @@ PING_TEMPLATES = [
 """,
 ]
 
+StartTime = time.time()
+
 @app.on_cmd(
     commands=["kping", "blop"],
     usage="Get userbot response time."
