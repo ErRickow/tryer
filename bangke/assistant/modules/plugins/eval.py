@@ -47,7 +47,7 @@ async def bot_evaluate_handler(_, m: Message):
         sys.stdout = old_stdout
         sys.stderr = old_stderr
         evaluation = exc or stderr or stdout or "Success"
-        final_output = f"**• PROGRAM:**\n\n`{cmd}`\n\n**• OUTPUT:**\n\n`{evaluation.strip()}`"
+        final_output = f"**• PROGRAM:**\n\n`{cmd}`\n\n**• OUTPUT:**\n\n```{evaluation.strip()}```"
 
         if len(final_output) > 4096:
             location = await app.create_file(filename="eval_output.txt", content=str(final_output), caption=f"`{m.text}`", send=False)
