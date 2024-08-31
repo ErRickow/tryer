@@ -11,7 +11,7 @@ from git.exc import (
 from pyrogram import Client
 from pyrogram.types import Message
 
-from main import app, gen
+from bangke import app, gen
 from bangke.core.enums import UserType
 
 @app.on_cmd(
