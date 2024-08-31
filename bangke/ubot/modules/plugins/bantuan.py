@@ -78,8 +78,6 @@ async def inline_help_query(client, query):
     
     await client.answer_inline_query(query.id, results)
 
-app.run()
-
 
 # get all module name
 @app.on_cmd(
