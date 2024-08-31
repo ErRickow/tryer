@@ -135,27 +135,7 @@ async def inline_result(_, inline_query):
             ],
         cache_time=1
         )
-    elif query.startswith("#quote"):
-        await inline_query.answer(
-        results=[
-            InlineQueryResultArticle(
-                title="Tron Inline anime quotes",
-                input_message_content=InputTextMessageContent(app.animeQuote()),
-                description="Get infinite anime character quotes through this inline loop button.",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                "More", callback_data="animequote-tab"
-                            )
-                        ],
-                    ]
-                )
-            )
-        ],
-        cache_time=1
-        )
-    elif re.match(r"(@[\w]+|[\d]+) \| (.+)", query):
+   elif re.match(r"(@[\w]+|[\d]+) \| (.+)", query):
         text = None
         user = None
         user_id = None
@@ -182,8 +162,8 @@ async def inline_result(_, inline_query):
         results=[
             InlineQueryResultArticle(
                 title="whisper message.",
-                input_message_content=InputTextMessageContent(f"🔒 A whisper message to {text[0]}, Only he/she can open it."),
-                description="send a whisper message to someone.",
+                input_message_content=InputTextMessageContent(f"🔒 Pesan rahasia Untuk lo {text[0]}, Bukan untuk lo tolol."),
+                description="Kirim pesan rahasia ke seseorang.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
