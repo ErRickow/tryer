@@ -34,7 +34,7 @@ def get_readable_time(seconds: int) -> str:
     return readable_time
 
 PING_TEMPLATES = [
-f"""
+"""
 <blockquote>
 💎  <b>Speed:</b> {speed} m/s
 🇮🇩  <b>Uptime:</b> {uptime}
