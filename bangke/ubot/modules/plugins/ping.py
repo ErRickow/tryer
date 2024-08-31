@@ -33,7 +33,7 @@ pings = []
     commands=["ping", "pong"],
     usage="Get userbot response time."
 )
-async def ping_handler(clien: Client, m: Message):
+async def ping_handler(client: Client, m: Message):
     """ ping handler for ping plugin """
     try:
 
