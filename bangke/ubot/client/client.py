@@ -75,7 +75,7 @@ class SuperClient(Core, Client):
             })
 
         # update plugin names with empty dicts in CMD_HELP
-        for file in os.listdir("bangke/userbot/modules/plugins/"):
+        for file in os.listdir("bangke/ubot/modules/plugins/"):
             if not file.startswith("__"):
                 self.CMD_HELP.update({file.split(".")[0]:{}})
 
@@ -126,7 +126,7 @@ class SuperClient(Core, Client):
             print(f"\n\n{Colors.block}Total plugins:{Colors.reset} {botplugins}\n\n\n")
 
             print(Colors.block + "PLUGINS:" + Colors.reset + " ( Userbot )\n\n")
-            ubotplugins = self.import_module("bangke/userbot/modules/plugins/", exclude=self.NoLoad)
+            ubotplugins = self.import_module("bangke/ubot/modules/plugins/", exclude=self.NoLoad)
             print(f"\n\n{Colors.block}Total plugins:{Colors.reset} {ubotplugins}\n")
 
             await self.bot.start_assistant()
