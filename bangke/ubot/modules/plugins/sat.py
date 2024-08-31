@@ -59,4 +59,4 @@ async def ping(client: Client, message: Message):
     end_time = time.time()
     speed = end_time - start_time
     caption = await ping_template(round(speed, 3), uptime, app.UserMention, parse_mode="html")
-    await pro.edit_text(caption)
+    await message.reply_text(caption)
