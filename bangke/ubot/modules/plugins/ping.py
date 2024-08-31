@@ -33,7 +33,7 @@ pings = []
     commands=["ping", "pong"],
     usage="Get userbot response time."
 )
-async def ping_handler(_, message: Message):
+async def ping_handler(_, m: Message):
     """ ping handler for ping plugin """
     try:
 
@@ -41,7 +41,7 @@ async def ping_handler(_, message: Message):
             start = datetime.now()
             end = datetime.now()
             m_s = (end - start).microseconds / 1000
-            await message.send_reply(
+            await m.send_reply(
                 f"**Pöng !!**\n`{m_s} ms`\n⧑ {app.UserMention}",
                 disable_web_page_preview=True
             )
