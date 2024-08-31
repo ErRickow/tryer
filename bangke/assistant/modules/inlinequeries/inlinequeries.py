@@ -1,3 +1,7 @@
+"""
+This file gives inline results with bot having via botusername tag.
+"""
+
 import re
 import asyncio
 from pyrogram import filters
@@ -62,83 +66,109 @@ async def create_helpmenu_articles(query=None):
 
 
 
+
+# via bot messages
 @app.bot.on_inline_query(filters.user(app.AllUsersId))
 async def inline_result(_, inline_query):
     print(inline_query)
     query = inline_query.query
-
-    if query.startswith("#helpmenu"):
+    if query.startswith("#pmpermit"):
+        await inline_query.answer(
+        results=[
+            InlineQueryResultPhoto(
+                photo_url=app.PmpermitPic,
+                title="Tron Inline security system",
+                description="Get tron security system inline menu.",
+                caption=app.PmpermitText,
+                parse_mode=ParseMode.DEFAULT,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        app.BuildKeyboard(([["Approve", "approve-tab"]]))
+                    ]
+                )
+            )
+        ],
+        cache_time=1
+        )
+    elif query.startswith("#helpmenu"):
         emoji = app.HelpEmoji or "•"
 
-        result = await app.get_inline_bot_results(
-            app.bot.username,
-            "#helpmenu"
+        await inline_query.answer(
+        results=[
+            InlineQueryResultPhoto(
+                photo_url=app.BotPic,
+                title="Tron Inline helpdex menu",
+                description="Get your inline helpdex menu.",
+                caption=app.home_tab_string,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        app.BuildKeyboard(
+                            (
+                                [f"{emoji} Settings {emoji}", "settings-tab"],
+                                [f"{emoji} Plugins {emoji}", "plugins-tab"]
+                            )
+                        ),
+                        app.BuildKeyboard(
+                            (
+                                [f"{emoji} Extra {emoji}", "extra-tab"],
+                                [f"{emoji} Stats {emoji}", "stats-tab"]
+                            )
+                        ),
+                        app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
+                        app.BuildKeyboard(([["Close", "close-tab"]]))
+                    ]
+                )
+            )
+        ],
+        cache_time=1
         )
-        if result:
-            await inline_query.answer(
-                results=result.results,
-                cache_time=1,
-                is_personal=True,
-                reply_to_message_id=inline_query.message.message_id
-            )
-        else:
-            await inline_query.answer(
-                results=[
-                    InlineQueryResultArticle(
-                        title="Er Inline help menu",
-                        description="Dapatkan Help inline menu.",
-                        reply_markup=InlineKeyboardMarkup(
-                            [
-                                app.BuildKeyboard(
-                                    (
-                                        [f"{emoji} Settings {emoji}", "settings-tab"],
-                                        [f"{emoji} Plugins {emoji}", "plugins-tab"]
-                                    )
-                                ),
-                                app.BuildKeyboard(
-                                    (
-                                        [f"{emoji} Extra {emoji}", "extra-tab"],
-                                        [f"{emoji} Stats {emoji}", "stats-tab"]
-                                    )
-                                ),
-                                app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
-                                app.BuildKeyboard(([["Close", "close-tab"]]))
-                            ]
-                        )
-                    )
-                ],
-                cache_time=1,
-                is_personal=True,
-                reply_to_message_id=inline_query.message.message_id
-            )
     elif query.startswith("#ialive"):
         await inline_query.answer(
-            results=[
-                InlineQueryResultPhoto(
-                    photo_url=app.ialive_pic(),
-                    title="Er Inline alive",
-                    description="Inline Alive bot.",
-                    caption=app.ialive_tab_string,
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            app.BuildKeyboard((["Home", "close-tab"], ["Back", "home-tab"]))
-                        ]
-                    )
+        results=[
+            InlineQueryResultPhoto(
+                photo_url=app.ialive_pic(),
+                title="Tron Inline alive",
+                description="Get your inline alive results with buttons.",
+                caption=app.ialive_tab_string,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        app.BuildKeyboard((["Home", "close-tab"], ["Back", "home-tab"]))
+                    ]
                 )
+            )
             ],
-            cache_time=1
+        cache_time=1
         )
-
+    elif query.startswith("#quote"):
+        await inline_query.answer(
+        results=[
+            InlineQueryResultArticle(
+                title="Tron Inline anime quotes",
+                input_message_content=InputTextMessageContent(app.animeQuote()),
+                description="Get infinite anime character quotes through this inline loop button.",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "More", callback_data="animequote-tab"
+                            )
+                        ],
+                    ]
+                )
+            )
+        ],
+        cache_time=1
+        )
     elif re.match(r"(@[\w]+|[\d]+) \| (.+)", query):
         text = None
         user = None
         user_id = None
 
-        if "|" not in query:
+        if not "|" in query:
             return
         else:
             text = query.split("|")
-            # Lanjutkan dengan logika untuk memproses 'text' jika diperlukan.
+
         try:
             user = await app.bot.get_users(text[0])
         except PeerIdInvalid:
@@ -156,13 +186,13 @@ async def inline_result(_, inline_query):
         results=[
             InlineQueryResultArticle(
                 title="whisper message.",
-                input_message_content=InputTextMessageContent(f"🔒 Pesan rahasia Untuk lo {text[0]}, Bukan untuk lo tolol."),
-                description="Kirim pesan rahasia ke seseorang.",
+                input_message_content=InputTextMessageContent(f"🔒 A whisper message to {text[0]}, Only he/she can open it."),
+                description="send a whisper message to someone.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Lihat pesan 🔐", 
+                                text="show message 🔐", 
                                 callback_data=f"{app.id}|{user_id}|{number}"
                             )
                         ],
@@ -193,11 +223,11 @@ async def inline_result(_, inline_query):
                                 await cb.answer(num, show_alert=True)
                                 return True
                             else:
-                                await cb.answer("Pesan rahasia expired.", show_alert=True)
+                                await cb.answer("whipser message expired.", show_alert=True)
                                 return True
 
                         else:
-                            await cb.answer("Gaboleh ya njing", show_alert=True)
+                            await cb.answer("You're not allowed to view this message", show_alert=True)
                     except Exception as e:
                         print(e)
 
