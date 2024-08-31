@@ -3,7 +3,7 @@ import asyncio
 
 from datetime import datetime
 
-from pyrogram import client, filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.types import *
 
