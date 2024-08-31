@@ -110,7 +110,7 @@ class Configuration: # pylint: disable=too-few-public-methods
     # default sudo commands to add in database when adding a sudo
     SUDO_CMDS = [x for x in getenv("SUDO_CMDS", "").split()] # splits on spaces
     # command trigger, it works like this: .ping => result: pong !
-    TRIGGER = getenv("TRIGGER", ".")
+    TRIGGER = getenv("TRIGGER", "x")
     # for more info visit docs.pyrogram.org, workers section
     WORKERS = int(getenv("WORKERS", "8"))
     # exclude official plugins from installing, give a space between plugin names
