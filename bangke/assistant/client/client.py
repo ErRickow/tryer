@@ -16,7 +16,7 @@ from bangke.core import Core
 
 
 class Bot(Core, Client):
-    """ Assistant (Nora) """
+    """ Assistant (Sugeng) """
     def __init__(self):
         super().__init__(
             name="Sugeng",
