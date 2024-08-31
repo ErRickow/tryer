@@ -125,7 +125,7 @@ class SuperClient(Core, Client):
             self.import_module("bangke/assistant/modules/inlinequeries/", display_module=False)
             print(f"\n\n{Colors.block}Total plugins:{Colors.reset} {botplugins}\n\n\n")
 
-            print(Colors.block + "PLUGINS:" + Colors.reset + " ( Userbot )\n\n")
+            print(Colors.block + "PLUGINS:" + Colors.reset + " ( Ubot )\n\n")
             ubotplugins = self.import_module("bangke/ubot/modules/plugins/", exclude=self.NoLoad)
             print(f"\n\n{Colors.block}Total plugins:{Colors.reset} {ubotplugins}\n")
 
