@@ -34,7 +34,7 @@ class ClassManager(Config, Methods):
     # other /
     message_ids = {}
     PIC = "https://telegra.ph/file/38eec8a079706b8c19eae.mp4"
-    Repo = "https://github.com/TronUb/Tron.git"
+    Repo = "https://github.com/ErRickow/tryer.git"
     StartTime = time.time()
     utube_object = object
     callback_user = None
