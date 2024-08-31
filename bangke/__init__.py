@@ -47,8 +47,8 @@ class Tools:
         )).stdout.decode()
 
         def setup_config(self):
-        count = 0
-        self.clear_screen
+          count = 0
+          self.clear_screen
 
         # check requirements & install
        # self.check_requirements()
