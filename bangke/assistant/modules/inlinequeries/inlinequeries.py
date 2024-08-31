@@ -73,7 +73,6 @@ async def inline_result(_, inline_query):
                 InlineQueryResultArticle(
                     title="Er Inline Security",
                     description="Get tron security system inline menu.",
-                    caption=app.PmpermitText,
                     parse_mode=ParseMode.DEFAULT,
                     reply_markup=InlineKeyboardMarkup(
                         [
@@ -94,7 +93,6 @@ async def inline_result(_, inline_query):
                 InlineQueryResultArticle(
                     title="Er Inline help menu",
                     description="Dapatkan Help inline menu.",
-                    caption=app.home_tab_string,
                     reply_markup=InlineKeyboardMarkup(
                         [
                             app.BuildKeyboard(
