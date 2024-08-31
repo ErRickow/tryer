@@ -80,7 +80,7 @@ class Tools:
                 count += 1
 
         # Panggil metode clear_screen
-        self.clear_screen()  # Sekarang ini akan berfungsi dengan baikmethod jika ingin membersihkan layar otomatis
+        self.clear_screen()  # call the method jika ingin membersihkan layar otomatis
 
 # Pastikan untuk mendefinisikan Config dan Configuration di sini.
 
