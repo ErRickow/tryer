@@ -11,6 +11,6 @@ from bangke.ubot.client import app
 @app.alert_user
 async def update_callback(_, cb: CallbackQuery):
     await cb.answer(
-        text="This feature is not implemented yet.",
+        text="Fiturnya belum ada anjing tolol.",
         show_alert=True
     )
