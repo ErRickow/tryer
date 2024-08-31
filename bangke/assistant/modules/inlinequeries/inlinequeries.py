@@ -123,8 +123,8 @@ async def inline_result(_, inline_query):
         results=[
             InlineQueryResultPhoto(
                 photo_url=app.ialive_pic(),
-                title="Tron Inline alive",
-                description="Get your inline alive results with buttons.",
+                title="Er Inline alive",
+                description="Inline Alive bot.",
                 caption=app.ialive_tab_string,
                 reply_markup=InlineKeyboardMarkup(
                     [
