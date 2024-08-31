@@ -1,7 +1,6 @@
 """ dv plugin """
 
 from pyrogram.types import Message
-from pyrogram import Client
 
 from bangke import app, gen
 from bangke.core.enums import UserType
@@ -13,10 +12,10 @@ from bangke.core.enums import UserType
     usage="Set database variable.",
     disable_for=UserType.SUDO
 )
-async def setdv_handler(client: Client, message: Message):
+async def setdv_handler(_, m: Message):
     """ setdv handler for dv plugin """
     if app.long() == 1:
-        await app.reply_text("Give me a key & a value to set dv vars.", text_type=["mono"], delme=4)
+        await app.send_edit("Give me a key & a value to set dv vars.", text_type=["mono"], delme=4)
 
     elif app.textlen() > 4096:
         await app.send_edit(
