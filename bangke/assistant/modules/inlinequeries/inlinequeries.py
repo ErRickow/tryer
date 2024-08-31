@@ -135,10 +135,10 @@ async def inline_result(_, inline_query):
             ],
         cache_time=1
         )
-        elif re.match(r"(@[\w]+|[\d]+) \| (.+)", query):
-          text = None
-          user = None
-          user_id = None
+    elif re.match(r"(@[\w]+|[\d]+) \| (.+)", query):
+        text = None
+        user = None
+        user_id = None
 
         if not "|" in query:
             return
