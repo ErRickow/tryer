@@ -28,37 +28,20 @@ public = app.BuildKeyboard(([[f"{emoji} Public Commands {emoji}", "public-comman
 async def bot_start_handler(_, m: Message):
     if m.from_user:
         if m.from_user.id == app.id:
-            # bot pic
-            buttons=InlineKeyboardMarkup(
-                [ settings, extra, about, close ]
+            # Bot sendiri
+            buttons = InlineKeyboardMarkup(
+                [settings, extra, about, close]
             )
-            botpic = app.BotPic.split(".")[-1] # extension of media
-            if botpic in ("jpg", "png", "jpeg"):
-                await app.bot.send_photo(
-                    m.chat.id,
-                    app.BotPic,
-                    app.BotBio(m),
-                    reply_markup=buttons
-                )
-            elif botpic in ("mp4", "gif"):
-                await app.bot.send_video(
-                    m.chat.id,
-                    app.BotPic,
-                    app.BotBio(m),
-                    reply_markup=buttons
-                )
-            else:
-                await app.bot.send_message(
-                    m.chat.id,
-                    app.BotBio(m),
-                    reply_markup=buttons
-                )
+            await app.bot.send_message(
+                m.chat.id,
+                app.BotBio(m),
+                reply_markup=buttons
+            )
 
         elif m.from_user.id != app.id:
-            await app.bot.send_photo(
+            await app.bot.send_message(
                 m.chat.id,
-                "bangke/others/resources/gambar/cater.jpg",
-                f"Allo {m.from_user.mention} Lu pantas menggunakan gw. Ada beberapa commands yang bisa lu pake. Liat di bawah.",
+                f"Allo {m.from_user.mention}, lu pantas menggunakan gw. Ada beberapa commands yang bisa lu pake. Liat di bawah.",
                 reply_markup=InlineKeyboardMarkup(
                     [public]
                 ),
