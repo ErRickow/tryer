@@ -35,9 +35,9 @@ def get_readable_time(seconds: int) -> str:
 
 PING_TEMPLATES = [
 """
-🔷  **Speed:** {speed} m/s
-🔷  **Uptime:** {uptime}
-🔷  **Onwer:** {owner}
+💎  <b>Speed:</b> {speed} m/s
+🇮🇩  <b>Uptime:</b> {uptime}
+👤  <b>Onwer:</b> {owner}
 """,
 ]
 
