@@ -5,7 +5,7 @@ from datetime import datetime
 
 from pyrogram.types import Message
 
-from main import app, gen
+from bangke import app, gen
 
 
 
