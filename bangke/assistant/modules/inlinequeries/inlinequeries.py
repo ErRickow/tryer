@@ -73,7 +73,7 @@ async def inline_result(_, inline_query):
         results=[
             InlineQueryResultPhoto(
                 photo_url=app.PmpermitPic,
-                title="Tron Inline security system",
+                title="Er Inline Security",
                 description="Get tron security system inline menu.",
                 caption=app.PmpermitText,
                 parse_mode=ParseMode.DEFAULT,
