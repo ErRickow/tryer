@@ -40,8 +40,8 @@ class Tools:
         ).stdout.decode()
 
     def setup_config(self):
-        count = 0
-        self.clear_screen()  # Call the method
+        count = 1
+        #self.clear_screen()  # Call the method
 
         # Check if the user config file exists
         if os.path.isfile("config.txt"):
