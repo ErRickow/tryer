@@ -90,7 +90,7 @@ async def inline_result(_, inline_query):
 
         await inline_query.answer(
             results=[
-                InlineQueryResultPhoto(
+                InlineQueryResultArticle(
                   #  photo_url=app.BotPic,
                     title="Er Inline help menu",
                     description="Dapatkan Help inline menu.",
