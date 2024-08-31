@@ -77,8 +77,8 @@ class Bot(Core, Client):
                 if cmds != botcmdkeys:
                     print("Setting bot commands.\n")
                     await self.set_bot_commands([BotCommand(y[0], y[1]) for y in botcmd])
-                    print("Added bot commands.\n")
+                    print("Menambahkan commands bots.\n")
             else:
-                print("Assistant is not activated.\n")
+                print("Assistant kaga aktif tolol.\n")
         except Exception:
             print(traceback.format_exc())
