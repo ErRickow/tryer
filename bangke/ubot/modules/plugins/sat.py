@@ -41,7 +41,11 @@ PING_TEMPLATES = [
 """,
 ]
 
-PING_TEMPLATES = ping_template
+async def ping_template(speed: float, uptime: str, owner: str) -> str:
+    try
+    message = random.choice(PING_TEMPLATES)
+    return message.format(speed=speed, uptime=uptime, owner=owner)
+
 StartTime = time.time()
 
 @app.on_cmd(
