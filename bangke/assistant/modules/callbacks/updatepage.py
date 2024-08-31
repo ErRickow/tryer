@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
 
-from main.userbot.client import app
+from bangke.ubot.client import app
 
 
 
