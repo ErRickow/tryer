@@ -36,7 +36,7 @@ async def ngapdate(client, message):
         with open("output.txt", "w+") as file:
             file.write(out)
 
-        X = f"<blockquote>{emo.alive} <b>Change logs {bot.me.mention}</b></blockquote>"
+        X = f"<blockquote><b>Change logs {bot.me.mention}</b></blockquote>"
         await client.send_document(
             message.chat.id,
             "output.txt",
