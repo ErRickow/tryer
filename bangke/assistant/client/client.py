@@ -63,13 +63,13 @@ class Bot(Core, Client):
                 print(Colors.cursor_up(2))
                 print(f"{Colors.block}Assistant:{Colors.reset} [{Colors.green}ON{Colors.reset}] {Colors.reset}", end="\n\n")
                 botcmd = [
-                    ["start", "check whether bot is on or not."],
-                    ["help", "Get your helpdex."],
-                    ["ping", "Get server response speed & uptime."],
-                    ["id", "Get ids of users / groups."],
-                    ["quote", "get inline anime quotes."],
-                    ["broadcast", "send messages to users who have started your bot."],
-                    ["eval", "evaluate python codes."]
+                    ["start", "cek bot online/offline."],
+                    ["help", "Bantuan bot"],
+                    ["ping", "Cek response server bot."],
+                    ["id", "Dapatkan id user/groups."],
+#                    ["quote", "get inline anime quotes."],
+                    ["broadcast", "broadcast di bot."],
+                    ["eval", "Jalankan python code di bot."]
                 ]
                 cmds = [x.command for x in await self.get_bot_commands()]
                 botcmdkeys = [y[0] for y in botcmd]
