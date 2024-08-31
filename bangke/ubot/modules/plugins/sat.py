@@ -6,3 +6,5 @@ from datetime import datetime as dt
 from pyrogram import Client, filters
 from pyrogram.types import *
 from pyrogram.types import Message
+
+from bangke import app, gen
