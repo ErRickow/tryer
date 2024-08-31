@@ -31,7 +31,7 @@ async def ngapdate(client, message):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
     elif len(out) > 4096:
         anuk = await pros.edit(
-            f"<blockquote>{emo.proses} <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
+            f"<blockquote><b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
         with open("output.txt", "w+") as file:
             file.write(out)
