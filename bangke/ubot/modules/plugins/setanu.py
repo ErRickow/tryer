@@ -15,7 +15,7 @@ from bangke.core.enums import UserType
 async def setdv_handler(_, m: Message):
     """ setdv handler for dv plugin """
     if app.long() == 1:
-        await app.send_edit("Give me a key & a value to set dv vars.", text_type=["mono"], delme=4)
+        await reply("Give me a key & a value to set dv vars.", text_type=["mono"], delme=4)
 
     elif app.textlen() > 4096:
         await app.send_edit(
