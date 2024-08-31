@@ -4,7 +4,9 @@ import requests
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
-from bangke import app, gen
+from bangke import app
+from bangke.core import filters
+from bangke.core.enums import HandlerType
 
 url = "https://abot3.gchk2.skybyte.me/api/chat-process"
 headers = {
