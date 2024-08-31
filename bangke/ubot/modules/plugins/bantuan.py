@@ -20,7 +20,7 @@ from bangke import app, gen
     commands="help",
     usage="Get your helpmenu, use plugin name as suffix to get command information.",
 )
-async def helpmenu_handler(client: Client, m: Message):
+async def helpmenu_handler(client: Client, message: Message):
     """ helpmenu handler for help plugin """
 
     args = m.command or m.sudo_message.command or []
