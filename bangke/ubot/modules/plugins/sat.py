@@ -37,7 +37,7 @@ PING_TEMPLATES = [
 """
 🔷  **Speed:** {speed} m/s
 🔷  **Uptime:** {uptime}
-🔷  **Onwer:** {app.usermention}
+🔷  **Onwer:** {owner}
 """,
 ]
 
@@ -52,7 +52,7 @@ async def ping(client: Client, message: Message):
     #img = await db.get_env(ENV_TEMPLATE.ping_pic)
     end_time = time.time()
     speed = end_time - start_time
-    caption = await ping_template(round(speed, 3), uptime, client.me.mention)
+    caption = await ping_template(round(speed, 3), uptime, app.me.mention)
     if img:
         img = random.choice(img.split(" "))
         if img.endswith(".mp4"):
