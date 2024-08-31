@@ -47,7 +47,7 @@ class Tools:
         )).stdout.decode()
 
     def setup_config(self):
-        count = 1
+        count = 0
         self.clear_screen
 
         # check requirements & install
@@ -55,18 +55,20 @@ class Tools:
        # self.clear_screen
 
         # check if the user config file exists
-        if os.path.exists("config.txt"):
+        if os.path.isfile("config.txt"):
             print("config.txt file exists: Yes\n\n")
             with open("config.txt") as f:
-                content = [x for x in f.read().split("\n") if x not in ("\n", "")]
+                content = [x for x in f.read().split("\n") if x.strip()]
 
             # set text file config values
             print(Colors.block + "Setting configuration values.\n\n" + Colors.reset)
             for x in content:
                 data = x.split("=")
                 file_value = data[1]
-                if data[1].isdigit():
-                    file_value = int(data[1])
+                if len(data) < 2:
+                  
+                  print(f"skipping invalid configuration value line: {x}")
+                  continue
 
                 setattr(Config, data[0], file_value)
                 print(f"[{count}] Added config = {data[0]} with value = {file_value}\n")
