@@ -29,7 +29,7 @@ class ClassManager(Config, Methods):
     # owner details /
     owner_name = "Er {"⁧{""
     owner_id = 1448273246
-    owner_username = "@BEASTZX"
+    owner_username = "@chakszzz"
 
     # other /
     message_ids = {}
