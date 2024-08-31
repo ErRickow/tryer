@@ -58,7 +58,7 @@ async def bot_start_handler(_, m: Message):
             await app.bot.send_photo(
                 m.chat.id,
                 "bangke/others/resources/gambar/cater.jpg",
-                f"Hey {m.from_user.mention} You are eligible to use me. There are some commands you can use, check below.",
+                f"Allo {m.from_user.mention} Lu pantas menggunakan gw. Ada beberapa commands yang bisa lu pake. Liat di bawah.",
                 reply_markup=InlineKeyboardMarkup(
                     [public]
                 ),
