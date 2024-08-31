@@ -28,7 +28,7 @@ headers = {
     handler_type=HandlerType.MESSAGE,
     filters=filters.gen(
         commands="ask",
-        usage="Check Bot is active or not."
+        usage="tanya dengan ai."
     )
 )
 async def gpt3(client: Client, message: Message):
