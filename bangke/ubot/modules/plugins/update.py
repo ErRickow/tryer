@@ -1,5 +1,6 @@
 import re
 import asyncio
+import subprocess
 
 from git import Repo
 from git.exc import (
