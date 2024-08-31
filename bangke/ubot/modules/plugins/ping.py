@@ -3,7 +3,9 @@ import asyncio
 
 from datetime import datetime
 
+from pyrogram import client, filters
 from pyrogram.types import Message
+from pyrogram.types import *
 
 from bangke import app, gen
 
@@ -31,7 +33,7 @@ pings = []
     commands=["ping", "pong"],
     usage="Get userbot response time."
 )
-async def ping_handler(_, m: Message):
+async def ping_handler(clien: Client, m: Message):
     """ ping handler for ping plugin """
     try:
 
