@@ -20,18 +20,20 @@ def isLocalHost():
     """Check if it is localhost"""
     return os.path.exists("config.txt")
 
+import os
+import platform
+import subprocess
+
 class Tools:
     """Use it for installing the required packages"""
     device = platform.uname()[0].lower()
     is_linux = device == "linux"
     is_windows = device == "windows"
 
-    @property
-    def clear_screen(self):
+    def clear_screen(self):  # Ubah dari property menjadi metode
         os.system("clear" if self.is_linux else "cls")
 
     def check_command(self, args: list):
-        # Hanya jalankan jika perlu
         if args:
             return subprocess.run(
                 args,
@@ -44,17 +46,15 @@ class Tools:
     def setup_config(self):
         count = 1
 
-        # Cek apakah file konfigurasi ada
         if os.path.isfile("config.txt"):
             print("config.txt file exists: Yes\n\n")
             with open("config.txt") as f:
                 content = [x.strip() for x in f if x.strip()]
 
-            # Set nilai konfigurasi dari file
             print(Colors.block + "Setting configuration values.\n\n" + Colors.reset)
             for x in content:
                 data = x.split("=")
-                if len(data) < 2:  # Cek jika ada setidaknya dua elemen
+                if len(data) < 2:
                     print(f"Skipping invalid configuration line: {x}")
                     continue
 
@@ -62,7 +62,7 @@ class Tools:
                 if file_value.isdigit():
                     file_value = int(file_value)
 
-                setattr(Config, data[0].strip(), file_value)  # Strip key juga
+                setattr(Config, data[0].strip(), file_value)
                 print(f"[{count}] Added config = {data[0].strip()} with value = {file_value}\n")
                 count += 1
 
@@ -70,7 +70,6 @@ class Tools:
             print("config.txt file doesn't exist, exiting...")
             exit(0)
 
-        # Set nilai konfigurasi yang diperlukan
         print(Colors.block + "\nSetting remaining configuration values\n\n" + Colors.reset)
         for attr in dir(Configuration):
             value = getattr(Configuration, attr, None)
@@ -80,8 +79,8 @@ class Tools:
                 print(f"[{count}] Added config = {attr} with value = {value}\n")
                 count += 1
 
-        # Menghilangkan prompt untuk clear screen
-                self.clear_screen()  # Call the method jika ingin membersihkan layar otomatis
+        # Panggil metode clear_screen
+        self.clear_screen()  # Sekarang ini akan berfungsi dengan baikmethod jika ingin membersihkan layar otomatis
 
 # Pastikan untuk mendefinisikan Config dan Configuration di sini.
 
