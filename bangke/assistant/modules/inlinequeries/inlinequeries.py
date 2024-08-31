@@ -90,9 +90,8 @@ async def inline_result(_, inline_query):
             ],
             cache_time=1
         )
-
-    elif query.startswith("#helpmenu"):
-        emoji = app.HelpEmoji or "•"  # Menggunakan emoji dari app atau fallback ke "•"
+    if query.startswith("#helpmenu"):
+        emoji = app.HelpEmoji or "•"
 
         await inline_query.answer(
             results=[
@@ -123,7 +122,6 @@ async def inline_result(_, inline_query):
             ],
             cache_time=1
         )
-
     elif query.startswith("#ialive"):
         await inline_query.answer(
             results=[
