@@ -45,4 +45,4 @@ class BotConfig(object):
     @property
     def BotPic(self):
         """Get your bot pic url"""
-        return self.getdv("BOT_PIC") or self.BOT_PIC or "https://raw.githubusercontent.com/TronUb/Tron/master/main/core/resources/images/homepage.png" or None
+        return self.getdv("BOT_PIC") or self.BOT_PIC or "" or None
