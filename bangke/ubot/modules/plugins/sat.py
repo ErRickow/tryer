@@ -59,11 +59,4 @@ async def ping(client: Client, message: Message):
     end_time = time.time()
     speed = end_time - start_time
     caption = await ping_template(round(speed, 3), uptime, app.UserMention)
-    try:
-      await message.reply_photo(
-        img,
-        caption=caption,
-        )
-        await pro.delete()
-        return
-      await pro.edit_text(caption)
+    await pro.edit_text(caption)
