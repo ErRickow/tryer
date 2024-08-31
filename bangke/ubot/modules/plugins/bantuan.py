@@ -37,12 +37,11 @@ async def helpmenu_handler(_, m: Message):
                 "#helpmenu"
             )
             if result:
-                await m.edit_text("")
+                await m.delete()
                 info = await app.send_inline_bot_result(
                     m.chat.id,
                     query_id=result.query_id,
                     result_id=result.results[0].id,
-                    input_message_content=InputTextMessageContent("Your help menu here"),
                     disable_notification=True,
                 )
 
@@ -57,11 +56,11 @@ async def helpmenu_handler(_, m: Message):
             module_help = await app.PluginData(args[1])
             if not module_help:
                 await app.send_edit(
-                    f"Invalid plugin name specified, use {app.Trigger()[0]}uplugs to get list of plugins",
+                    f"Invalid plugin name specified, use `{app.Trigger()[0]}uplugs` to get list of plugins",
                     delme=3
                 )
             else:
-                await app.send_edit(f"MODULE: {args[1]}\n\n" + "".join(module_help))
+                await app.send_edit(f"**MODULE:** {args[1]}\n\n" + "".join(module_help))
         else:
             await app.send_edit("Try again later !", text_type=["mono"], delme=3)
     except BotInlineDisabled:
@@ -69,6 +68,7 @@ async def helpmenu_handler(_, m: Message):
         await helpmenu_handler(_, m)
     except Exception as e:
         await app.error(e)
+
 
 # get all module name
 @app.on_cmd(
