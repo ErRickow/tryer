@@ -69,6 +69,9 @@ class Tools:
                   
                   print(f"skipping invalid configuration value line: {x}")
                   continue
+                file_value = data[1].strip()
+                if file_value.isdigit():
+                  file_value = int(file_value)
 
                 setattr(Config, data[0], file_value)
                 print(f"[{count}] Added config = {data[0]} with value = {file_value}\n")
