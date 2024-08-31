@@ -32,7 +32,7 @@ NEW_MESSAGE_UPDATES = (
 
 
 class SuperClient(Core, Client):
-    """ Userbot (tron) """
+    """ Ubot Er """
     def __init__(self):
         super().__init__(
             name="sugeng",
