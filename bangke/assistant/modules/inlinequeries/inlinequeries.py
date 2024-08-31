@@ -63,88 +63,95 @@ async def create_helpmenu_articles(query=None):
 
 
 
-# via bot messages
+import re
+from pyrogram import filters
+from pyrogram.types import InlineQueryResultPhoto, InlineKeyboardMarkup
+
 @app.bot.on_inline_query(filters.user(app.AllUsersId))
 async def inline_result(_, inline_query):
     print(inline_query)
     query = inline_query.query
+
     if query.startswith("#pmpermit"):
         await inline_query.answer(
-        results=[
-            InlineQueryResultPhoto(
-                photo_url=app.PmpermitPic,
-                title="Er Inline Security",
-                description="Get tron security system inline menu.",
-                caption=app.PmpermitText,
-                parse_mode=ParseMode.DEFAULT,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        app.BuildKeyboard(([["Approve", "approve-tab"]]))
-                    ]
+            results=[
+                InlineQueryResultPhoto(
+                    photo_url=app.PmpermitPic,
+                    title="Er Inline Security",
+                    description="Get tron security system inline menu.",
+                    caption=app.PmpermitText,
+                    parse_mode=ParseMode.DEFAULT,
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            app.BuildKeyboard(([["Approve", "approve-tab"]]))
+                        ]
+                    )
                 )
-            )
-        ],
-        cache_time=1
+            ],
+            cache_time=1
         )
-    elif query.startswith("#helpmenu"):
-    emoji = app.HelpEmoji or "•"  # Menggunakan emoji dari app atau fallback ke "•"
 
-    await inline_query.answer(
-        results=[
-            InlineQueryResultPhoto(
-                photo_url=app.BotPic,
-                title="Er Inline help menu",
-                description="Dapatkan Help inline menu.",
-                caption=app.home_tab_string,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        app.BuildKeyboard(
-                            (
-                                [f"{emoji} Settings {emoji}", "settings-tab"],
-                                [f"{emoji} Plugins {emoji}", "plugins-tab"]
-                            )
-                        ),
-                        app.BuildKeyboard(
-                            (
-                                [f"{emoji} Extra {emoji}", "extra-tab"],
-                                [f"{emoji} Stats {emoji}", "stats-tab"]
-                            )
-                        ),
-                        app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
-                        app.BuildKeyboard(([["Close", "close-tab"]]))
-                    ]
+    elif query.startswith("#helpmenu"):
+        emoji = app.HelpEmoji or "•"  # Menggunakan emoji dari app atau fallback ke "•"
+
+        await inline_query.answer(
+            results=[
+                InlineQueryResultPhoto(
+                    photo_url=app.BotPic,
+                    title="Er Inline help menu",
+                    description="Dapatkan Help inline menu.",
+                    caption=app.home_tab_string,
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            app.BuildKeyboard(
+                                (
+                                    [f"{emoji} Settings {emoji}", "settings-tab"],
+                                    [f"{emoji} Plugins {emoji}", "plugins-tab"]
+                                )
+                            ),
+                            app.BuildKeyboard(
+                                (
+                                    [f"{emoji} Extra {emoji}", "extra-tab"],
+                                    [f"{emoji} Stats {emoji}", "stats-tab"]
+                                )
+                            ),
+                            app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
+                            app.BuildKeyboard(([["Close", "close-tab"]]))
+                        ]
+                    )
                 )
-            )
-        ],
-        cache_time=1
-    )
+            ],
+            cache_time=1
+        )
+
     elif query.startswith("#ialive"):
         await inline_query.answer(
-        results=[
-            InlineQueryResultPhoto(
-                photo_url=app.ialive_pic(),
-                title="Er Inline alive",
-                description="Inline Alive bot.",
-                caption=app.ialive_tab_string,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        app.BuildKeyboard((["Home", "close-tab"], ["Back", "home-tab"]))
-                    ]
+            results=[
+                InlineQueryResultPhoto(
+                    photo_url=app.ialive_pic(),
+                    title="Er Inline alive",
+                    description="Inline Alive bot.",
+                    caption=app.ialive_tab_string,
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            app.BuildKeyboard((["Home", "close-tab"], ["Back", "home-tab"]))
+                        ]
+                    )
                 )
-            )
             ],
-        cache_time=1
+            cache_time=1
         )
+
     elif re.match(r"(@[\w]+|[\d]+) \| (.+)", query):
         text = None
         user = None
         user_id = None
 
-        if not "|" in query:
+        if "|" not in query:
             return
         else:
             text = query.split("|")
-
+            # Lanjutkan dengan logika untuk memproses 'text' jika diperlukan.
         try:
             user = await app.bot.get_users(text[0])
         except PeerIdInvalid:
