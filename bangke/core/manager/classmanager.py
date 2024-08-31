@@ -27,8 +27,8 @@ class ClassManager(Config, Methods):
     CMD_HELP = {}
 
     # owner details /
-    owner_name = "࿇•ẞᗴᗩSԵ•࿇"
-    owner_id = 1790546938
+    owner_name = "Er {"⁧{""
+    owner_id = 1448273246
     owner_username = "@BEASTZX"
 
     # other /
