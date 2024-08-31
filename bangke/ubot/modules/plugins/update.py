@@ -11,8 +11,11 @@ from git.exc import (
 from main import app, gen
 from bangke.core.enums import UserType
 
-
-
+@app.on_cmd(
+    commands="up",
+    usage="Update your userbot to the latest version.",
+    disable_for=UserType.SUDO
+)
 async def ngapdate(client, message):
     emo = Emo(client.me.id)
     await emo.initialize()
