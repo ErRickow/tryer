@@ -2,60 +2,83 @@
 
 import os
 
-from pyrogram import filters
-from pyrogram.types import Message
+from pyrogram import filters, client
 from pyrogram.errors import BotInlineDisabled
 
 from bangke import app, gen
 
-
+from pyrogram.types import Message, InlineQueryResultArticle, InputTextMessageContent
 
 @app.on_cmd(
     commands="help",
-    usage="Get your helpmenu, use plugin name as suffix to get command information.",
+    usage="Get your help menu, use plugin name as suffix to get command information.",
 )
 async def helpmenu_handler(_, m: Message):
-    """ helpmenu handler for help plugin """
+    """ Help menu handler for help plugin """
 
     args = m.command or m.sudo_message.command or []
-    args_exists = len(args) > 1  # Sederhanakan logika
+    args_exists = len(args) > 1
 
     try:
         if not args_exists:
             await app.send_edit(". . .", text_type=["mono"])
-            result = await app.get_inline_bot_results(
-                app.bot.username,
-                "#helpmenu"
-            )
-            if result and result.results:
-                await m.delete()
-                await app.send_inline_bot_result(
-                    m.chat.id,
-                    query_id=result.query_id,
-                    result_id=result.results[0].id,
-                    disable_notification=True,
-                )
-            else:
-                await app.send_edit(
-                    "Please check if your bot's inline mode is on.",
-                    delme=3,
-                    text_type=["mono"]
-                )
+            # Menampilkan bantuan umum secara langsung
+            help_text = "Use /help <plugin_name> to get specific help."
+            await m.reply(help_text)
         else:
             module_help = await app.PluginData(args[1])
             if not module_help:
                 await app.send_edit(
-                    f"Invalid plugin name specified, use {app.Trigger()[0]}uplugs to get a list of plugins.",
+                    f"Invalid plugin name specified, use {app.Trigger()[0]}plugs to get the list of plugins",
                     delme=3
                 )
             else:
                 await app.send_edit(f"MODULE: {args[1]}\n\n" + "".join(module_help))
-    except BotInlineDisabled:
-        await app.toggle_inline()
-        await helpmenu_handler(_, m)
     except Exception as e:
         await app.error(e)
 
+@app.on_inline_query()
+async def inline_help_query(client, query):
+    """ Handle inline queries for help """
+    
+    # Ambil plugin yang diminta dari query
+    plugin_name = query.query.strip()
+    
+    # Jika tidak ada nama plugin, tampilkan daftar bantuan umum
+    if not plugin_name:
+        results = [
+            InlineQueryResultArticle(
+                title="Help Menu",
+                description="Get help for specific commands.",
+                input_message_content=InputTextMessageContent("Use /help <plugin_name> for specific help.")
+            ),
+        ]
+        await client.answer_inline_query(query.id, results)
+        return
+    
+    # Ambil data plugin berdasarkan nama
+    module_help = await app.PluginData(plugin_name)
+    
+    if module_help:
+        results = [
+            InlineQueryResultArticle(
+                title=f"Help for {plugin_name}",
+                description="\n".join(module_help),
+                input_message_content=InputTextMessageContent("\n".join(module_help))
+            )
+        ]
+    else:
+        results = [
+            InlineQueryResultArticle(
+                title="Error",
+                description="Invalid plugin name specified.",
+                input_message_content=InputTextMessageContent("No help found for this plugin.")
+            )
+        ]
+    
+    await client.answer_inline_query(query.id, results)
+
+app.run()
 
 
 # get all module name
