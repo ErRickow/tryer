@@ -67,56 +67,50 @@ async def inline_result(_, inline_query):
     print(inline_query)
     query = inline_query.query
 
-    if query.startswith("#pmpermit"):
-        await inline_query.answer(
-            results=[
-                InlineQueryResultArticle(
-                    title="Er Inline Security",
-                    description="Get tron security system inline menu.",
-                    parse_mode=ParseMode.DEFAULT,
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            app.BuildKeyboard(([["Approve", "approve-tab"]]))
-                        ]
-                    )
-                )
-            ],
-            cache_time=1,
-            is_personal=True,
-            reply_to_message_id=inline_query.message.message_id
-        )
     if query.startswith("#helpmenu"):
         emoji = app.HelpEmoji or "•"
 
-        await inline_query.answer(
-            results=[
-                InlineQueryResultArticle(
-                    title="Er Inline help menu",
-                    description="Dapatkan Help inline menu.",
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            app.BuildKeyboard(
-                                (
-                                    [f"{emoji} Settings {emoji}", "settings-tab"],
-                                    [f"{emoji} Plugins {emoji}", "plugins-tab"]
-                                )
-                            ),
-                            app.BuildKeyboard(
-                                (
-                                    [f"{emoji} Extra {emoji}", "extra-tab"],
-                                    [f"{emoji} Stats {emoji}", "stats-tab"]
-                                )
-                            ),
-                            app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
-                            app.BuildKeyboard(([["Close", "close-tab"]]))
-                        ]
-                    )
-                )
-            ],
-            cache_time=1,
-            is_personal=True,
-            reply_to_message_id=inline_query.message.message_id
+        result = await app.get_inline_bot_results(
+            app.bot.username,
+            "#helpmenu"
         )
+        if result:
+            await inline_query.answer(
+                results=result.results,
+                cache_time=1,
+                is_personal=True,
+                reply_to_message_id=inline_query.message.message_id
+            )
+        else:
+            await inline_query.answer(
+                results=[
+                    InlineQueryResultArticle(
+                        title="Er Inline help menu",
+                        description="Dapatkan Help inline menu.",
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                                app.BuildKeyboard(
+                                    (
+                                        [f"{emoji} Settings {emoji}", "settings-tab"],
+                                        [f"{emoji} Plugins {emoji}", "plugins-tab"]
+                                    )
+                                ),
+                                app.BuildKeyboard(
+                                    (
+                                        [f"{emoji} Extra {emoji}", "extra-tab"],
+                                        [f"{emoji} Stats {emoji}", "stats-tab"]
+                                    )
+                                ),
+                                app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
+                                app.BuildKeyboard(([["Close", "close-tab"]]))
+                            ]
+                        )
+                    )
+                ],
+                cache_time=1,
+                is_personal=True,
+                reply_to_message_id=inline_query.message.message_id
+            )
     elif query.startswith("#ialive"):
         await inline_query.answer(
             results=[
