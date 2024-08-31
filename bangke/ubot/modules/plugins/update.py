@@ -20,8 +20,6 @@ from bangke.core.enums import UserType
     disable_for=UserType.SUDO
 )
 async def ngapdate(client, message):
-    emo = Emo(client.me.id)
-    await emo.initialize()
     pros = await message.reply(
         f"<blockquote>{emo.proses} <b>Memeriksa pembaruan resources {bot.me.mention} ..</b></blockquote>"
     )
