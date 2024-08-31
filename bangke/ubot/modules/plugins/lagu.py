@@ -14,7 +14,7 @@ headers = {
 
 
 @app.on_cmd(
-    commands=["song", "music"],
+    commands=["lagu", "music"],
     usage="Download songs in mp3 format."
 )
 async def song_handler(_, m: Message):
