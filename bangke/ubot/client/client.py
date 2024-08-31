@@ -131,12 +131,12 @@ class SuperClient(Core, Client):
 
             await self.bot.start_assistant()
             await self.start_userbot()
-            print("You successfully deployed Tronuserbot, try .ping or .alive commands to test it.")
+            print("Lu Sukses nge deploy Er Ubot, coba .ping atau .alive commands untuk test ubotnya.")
 
             try:
                 await self.send_start_message()
             except (ChannelInvalid, PeerIdInvalid):
-                print("Userbot start message wasn't send in Log Chat.")
+                print("Pesan Ubot tidak terkirim di pesan log chat.")
 
             await idle() # block execution
         except Exception:
