@@ -133,7 +133,7 @@ class Strings(object):
         text = f"**⛊  Inline Status:**\n\n"
         text += f"**⟐** {self.UserBio}\n\n"
         text += f"**⟜ Owner**: [{self.name}](https://t.me/{self.username})\n"
-        text += f"**⟜ Tron:** `{self.userbot_version}`\n"
+        text += f"**⟜ Er** `{self.userbot_version}`\n"
         text += f"**⟜ Python:** `{self.python_version}`\n"
         text += f"**⟜ Pyrogram:** `{self.pyrogram_version}`\n"
         text += f"**⟜ uptime:** `{self.uptime()}`\n"
