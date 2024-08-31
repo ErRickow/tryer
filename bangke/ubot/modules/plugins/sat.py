@@ -59,13 +59,6 @@ async def ping(client: Client, message: Message):
     end_time = time.time()
     speed = end_time - start_time
     caption = await ping_template(round(speed, 3), uptime, app.UserMention)
-    if img:
-        img = random.choice(img.split(" "))
-        if img.endswith(".mp4"):
-            await message.reply_video(
-                img,
-                caption=caption,
-            )
         else:
             await message.reply_photo(
                 img,
