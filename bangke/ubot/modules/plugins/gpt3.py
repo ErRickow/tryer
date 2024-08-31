@@ -24,7 +24,13 @@ headers = {
     "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
 }
 
-
+@app.on_update(
+    handler_type=HandlerType.MESSAGE,
+    filters=filters.gen(
+        commands="ask",
+        usage="Check Bot is active or not."
+    )
+)
 async def gpt3(client: Client, message: Message):
 
     if len(message.command) > 1:
