@@ -45,3 +45,26 @@ PING_TEMPLATES = [
     commands=["ping", "pong"],
     usage="Get userbot response time."
 )
+async def ping(client: Client, message: Message):
+    start_time = time.time()
+    pro = await message.reply_text("**Pong !!**")
+    uptime = get_readable_time(time.time() - StartTime)
+    #img = await db.get_env(ENV_TEMPLATE.ping_pic)
+    end_time = time.time()
+    speed = end_time - start_time
+    caption = await ping_template(round(speed, 3), uptime, client.me.mention)
+    if img:
+        img = random.choice(img.split(" "))
+        if img.endswith(".mp4"):
+            await message.reply_video(
+                img,
+                caption=caption,
+            )
+        else:
+            await message.reply_photo(
+                img,
+                caption=caption,
+            )
+            await pro.delete()
+        return
+    await pro.edit_text(caption)
