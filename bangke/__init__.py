@@ -81,7 +81,7 @@ class Tools:
                 count += 1
 
         # Menghilangkan prompt untuk clear screen
-                self.clear_screen()  # Call the method jika ingin membersihkan layar otomatis
+    self.clear_screen()  # Call the method jika ingin membersihkan layar otomatis
 
 # Pastikan untuk mendefinisikan Config dan Configuration di sini.
 
