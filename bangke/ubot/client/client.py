@@ -103,13 +103,13 @@ class SuperClient(Core, Client):
             raise Exception("The userbot client is missing.")
             quit(0)
 
-        print(f"{Colors.block}Userbot  :{Colors.reset} [{Colors.red}OFF{Colors.reset}]{Colors.reset}")
+        print(f"{Colors.block}Ubot Er :{Colors.reset} [{Colors.red}OFF{Colors.reset}]{Colors.reset}")
         response = await self.start()
         if response:
             print(Colors.cursor_up(2))
-            print(f"{Colors.block}Userbot  :{Colors.reset} [{Colors.green}ON{Colors.reset}] {Colors.reset}", end="\n\n")
+            print(f"{Colors.block}Ubot Er  :{Colors.reset} [{Colors.green}ON{Colors.reset}] {Colors.reset}", end="\n\n")
         else:
-            print("Userbot is not activated.\n")
+            print("Ubot is not activated.\n")
 
 
     async def start_bot(self):
@@ -117,7 +117,7 @@ class SuperClient(Core, Client):
         It also imports modules & plugins for assistant bot & userbot. """
 
         try:
-            print(20*"_" + Colors.block + Colors.bold + ". Welcome to Tron corporation ." + Colors.reset + "_"*20 + "\n\n\n")
+            print(20*"_" + Colors.block + Colors.bold + ". Selamat datang 2 Er Ubot ." + Colors.reset + "_"*20 + "\n\n\n")
 
             print(Colors.block + "PLUGINS:" + Colors.reset + " ( Assistant )\n\n")
             botplugins = self.import_module("bangke/assistant/modules/plugins/", exclude=self.NoLoad)
