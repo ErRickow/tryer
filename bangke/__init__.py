@@ -81,7 +81,7 @@ class Tools:
 
         clear = input(f"{Colors.block}Should I clear the screen?{Colors.reset} (Y/N): ")
         if not clear or (clear.upper() == "Y"):
-            self.clear_screen()  # Call the method
+           # self.clear_screen()  # Call the method
 
 
 tools = Tools()
