@@ -199,11 +199,11 @@ async def inline_result(_, inline_query):
                                 await cb.answer(num, show_alert=True)
                                 return True
                             else:
-                                await cb.answer("whipser message expired.", show_alert=True)
+                                await cb.answer("Pesan rahasia expired.", show_alert=True)
                                 return True
 
                         else:
-                            await cb.answer("You're not allowed to view this message", show_alert=True)
+                            await cb.answer("Gaboleh ya njing", show_alert=True)
                     except Exception as e:
                         print(e)
 
