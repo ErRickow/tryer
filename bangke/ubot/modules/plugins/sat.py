@@ -42,7 +42,7 @@ PING_TEMPLATES = [
 ]
 
 @app.on_cmd(
-    commands=["ping", "pong"],
+    commands=["kping", "blop"],
     usage="Get userbot response time."
 )
 async def ping(client: Client, message: Message):
