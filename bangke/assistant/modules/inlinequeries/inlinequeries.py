@@ -93,8 +93,8 @@ async def inline_result(_, inline_query):
         results=[
             InlineQueryResultPhoto(
                 photo_url=app.BotPic,
-                title="Tron Inline helpdex menu",
-                description="Get your inline helpdex menu.",
+                title="Er Inline help menu",
+                description="Dapatkan Help inline menu.",
                 caption=app.home_tab_string,
                 reply_markup=InlineKeyboardMarkup(
                     [
