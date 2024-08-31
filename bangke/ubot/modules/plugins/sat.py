@@ -53,7 +53,6 @@ StartTime = time.time()
 )
 async def ping(client: Client, message: Message):
     start_time = time.time()
-    pro = await message.reply_text("**Pong !!**")
     uptime = get_readable_time(time.time() - StartTime)
     #img = await db.get_env(ENV_TEMPLATE.ping_pic)
     end_time = time.time()
