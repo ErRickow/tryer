@@ -41,6 +41,7 @@ PING_TEMPLATES = [
 """,
 ]
 
+PING_TEMPLATES = ping_template
 StartTime = time.time()
 
 @app.on_cmd(
