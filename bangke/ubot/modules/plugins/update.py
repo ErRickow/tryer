@@ -23,11 +23,11 @@ from config import *
 )
 async def ngapdate(client, message):
     pros = await message.reply(
-        f"<blockquote><b>Memeriksa pembaruan resources {Bot.BotMention} ..</b></blockquote>"
+        f"<blockquote><b>Memeriksa pembaruan resources {app.BotMention} ..</b></blockquote>"
     )
     out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
-    teks = f"<b>❒ Status resources {Bot.BotMention}:</b>\n"
-    memeg = f"<b>Change logs {Bot.BotMention}</b>"
+    teks = f"<b>❒ Status resources {app.BotMention}:</b>\n"
+    memeg = f"<b>Change logs {app.BotMention}</b>"
     if "Already up to date." in str(out):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
     elif len(out) > 4096:
@@ -37,7 +37,7 @@ async def ngapdate(client, message):
         with open("output.txt", "w+") as file:
             file.write(out)
 
-        X = f"<blockquote><b>Change logs {Bot.BotMention}</b></blockquote>"
+        X = f"<blockquote><b>Change logs {app.BotMention}</b></blockquote>"
         await client.send_document(
             message.chat.id,
             "output.txt",
