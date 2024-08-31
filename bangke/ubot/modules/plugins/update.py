@@ -22,7 +22,7 @@ from bangke.core.manager import *
 )
 async def ngapdate(client, message):
     pros = await message.reply(
-        f"<blockquote>{emo.proses} <b>Memeriksa pembaruan resources {bot.me.mention} ..</b></blockquote>"
+        f"<blockquote><b>Memeriksa pembaruan resources {bot.me.mention} ..</b></blockquote>"
     )
     out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
     teks = f"<b>❒ Status resources {bot.me.mention}:</b>\n"
