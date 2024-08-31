@@ -27,3 +27,9 @@ from pyrogram.types import *
 
 from bangke import app, gen
 from bangke.core.enums import UserType
+
+@app.on_cmd(
+    commands=["eval", "ev"],
+    usage="Run python programs, (script level)",
+    disable_for=UserType.SUDO
+)
