@@ -57,7 +57,7 @@ async def bot_start_handler(_, m: Message):
         elif m.from_user.id != app.id:
             await app.bot.send_photo(
                 m.chat.id,
-                "main/others/resources/images/tron-square.png",
+                "bangke/others/resources/gambar/cater.jpg",
                 f"Hey {m.from_user.mention} You are eligible to use me. There are some commands you can use, check below.",
                 reply_markup=InlineKeyboardMarkup(
                     [public]
