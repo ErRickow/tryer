@@ -87,9 +87,9 @@ async def inline_result(_, inline_query):
         cache_time=1
         )
     elif query.startswith("#helpmenu"):
-        emoji = app.HelpEmoji or "•"
+    emoji = app.HelpEmoji or "•"  # Menggunakan emoji dari app atau fallback ke "•"
 
-        await inline_query.answer(
+    await inline_query.answer(
         results=[
             InlineQueryResultPhoto(
                 photo_url=app.BotPic,
@@ -117,7 +117,7 @@ async def inline_result(_, inline_query):
             )
         ],
         cache_time=1
-        )
+    )
     elif query.startswith("#ialive"):
         await inline_query.answer(
         results=[
