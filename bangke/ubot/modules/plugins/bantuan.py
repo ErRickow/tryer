@@ -2,7 +2,7 @@
 
 import os
 
-from pyrogram import filters, client
+from pyrogram import filters, Client
 from pyrogram.errors import BotInlineDisabled
 
 from bangke import app, gen
