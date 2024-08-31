@@ -8,6 +8,9 @@ from git.exc import (
     NoSuchPathError
 )
 
+from pyrogram import Client
+from pyrogram.types import Message
+
 from main import app, gen
 from bangke.core.enums import UserType
 
