@@ -2,7 +2,7 @@
 
 import os
 from pyrogram import filters
-from pyrogram.types import Message, InlineQueryResultPhoto, InlineKeyboardMarkup
+from pyrogram.types import Message, InlineQueryResultPhoto, InlineKeyboardMarkup, ParseMode
 from pyrogram.errors import BotInlineDisabled
 from bangke import app, gen
 
@@ -21,7 +21,7 @@ async def helpmenu_handler(_, m: Message):
 
             # Mengambil hasil inline query
             result = await app.get_inline_bot_results(app.bot.username, "#help")
-            if result:
+            if result and result.results:
                 await m.delete()
                 await app.send_inline_bot_result(
                     m.chat.id,
@@ -49,6 +49,7 @@ async def helpmenu_handler(_, m: Message):
     except Exception as e:
         await app.error(e)
 
+
 @app.bot.on_inline_query(filters.user(app.AllUsersId))
 async def inline_result(_, inline_query):
     print(inline_query)
@@ -56,35 +57,46 @@ async def inline_result(_, inline_query):
     emoji = app.HelpEmoji or "•"
 
     if query.startswith("#help"):
-        await inline_query.answer(
-            results=[
-                InlineQueryResultPhoto(
-                    photo_url=app.BotPic,
-                    title="Tron Inline helpdex menu",
-                    description="Get your inline helpdex menu.",
-                    caption=app.home_tab_string,
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            app.BuildKeyboard(
-                                (
-                                    [f"{emoji} Settings {emoji}", "settings-tab"],
-                                    [f"{emoji} Plugins {emoji}", "plugins-tab"]
-                                )
-                            ),
-                            app.BuildKeyboard(
-                                (
-                                    [f"{emoji} Extra {emoji}", "extra-tab"],
-                                    [f"{emoji} Stats {emoji}", "stats-tab"]
-                                )
-                            ),
-                            app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
-                            app.BuildKeyboard(([["Close", "close-tab"]]))
-                        ]
+        result = await app.get_inline_bot_results(app.bot.username, "#help")
+        if result and result.results:
+            await inline_query.answer(
+                results=[
+                    InlineQueryResultPhoto(
+                        photo_url=app.BotPic,
+                        title="Tron Inline helpdex menu",
+                        description="Get your inline helpdex menu.",
+                        caption=app.home_tab_string,
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                                app.BuildKeyboard(
+                                    (
+                                        [f"{emoji} Settings {emoji}", "settings-tab"],
+                                        [f"{emoji} Plugins {emoji}", "plugins-tab"]
+                                    )
+                                ),
+                                app.BuildKeyboard(
+                                    (
+                                        [f"{emoji} Extra {emoji}", "extra-tab"],
+                                        [f"{emoji} Stats {emoji}", "stats-tab"]
+                                    )
+                                ),
+                                app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
+                                app.BuildKeyboard((
+                                    [f"{emoji} Back {emoji}", "back-tab"]
+                                ))
+                            ]
+                        )
                     )
-                )
-            ],
-            cache_time=1
-        )
+                ],
+                cache_time=0
+            )
+        else:
+            await inline_query.answer(
+                results=[],
+                cache_time=0,
+                switch_pm_text="Inline mode is disabled",
+                switch_pm_parameter="help"
+            )
 # get all module name
 @app.on_cmd(
     commands="uplugs",
