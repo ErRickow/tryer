@@ -10,7 +10,7 @@ from bangke.core.enums import HandlerType
 @app.on_update(
     handler_type=HandlerType.MESSAGE,
     filters=filters.gen(
-        commands="ask",
+        commands="ai",
         usage="tanya dengan ai."
     )
 )
