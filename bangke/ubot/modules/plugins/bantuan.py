@@ -1,14 +1,10 @@
 """ help plugin """
 
 import os
-
 from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.errors import BotInlineDisabled
-
 from bangke import app, gen
-
-
 
 @app.on_cmd(
     commands="help",
@@ -23,28 +19,30 @@ async def helpmenu_handler(_, m: Message):
     try:
         if not args_exists:
             await app.send_edit(". . .", text_type=["mono"])
-            result = await app.get_inline_bot_results(
-                app.bot.username,
-                "#helpmenu"
-            )
 
-            if result:
-                await m.delete()
-                await app.send_inline_bot_result(
-                    m.chat.id,
-                    query_id=result.query_id,
-                    result_id=result.results[0].id,
-                    disable_notification=True,
+            # Gunakan async/await untuk memproses inline query secara asinkron
+            async def get_help_inline():
+                result = await app.get_inline_bot_results(
+                    app.bot.username, "#helpmenu"
                 )
+                if result:
+                    await m.delete()
+                    await app.send_inline_bot_result(
+                        m.chat.id,
+                        query_id=result.query_id,
+                        result_id=result.results[0].id,
+                        disable_notification=True,
+                    )
+                else:
+                    await app.send_edit(
+                        "Please check your bots inline mode is on or not . . .",
+                        delme=3,
+                        text_type=["mono"]
+                    )
 
-            else:
-                await app.send_edit(
-                    "Please check your bots inline mode is on or not . . .",
-                    delme=3,
-                    text_type=["mono"]
-                )
+            # Jalankan get_help_inline secara asinkron
+            await get_help_inline()
         elif args_exists:
-
             module_help = await app.PluginData(args[1])
             if not module_help:
                 await app.send_edit(
@@ -60,7 +58,6 @@ async def helpmenu_handler(_, m: Message):
         await helpmenu_handler(_, m)
     except Exception as e:
         await app.error(e)
-
 
 
 # get all module name
