@@ -57,14 +57,12 @@ async def inline_result(_, inline_query):
     emoji = app.HelpEmoji or "•"
 
     if query.startswith("#help"):
-        emoji = app.HelpEmoji or "•"
-
         await inline_query.answer(
-        results=[
-            InlineQueryResultPhoto(
-                photo_url=app.BotPic,
-                title="Tron Inline helpdex menu",
-                description="Get your inline helpdex menu.",
+            results=[
+                InlineQueryResultPhoto(
+                    photo_url=app.BotPic,
+                    title="Tron Inline helpdex menu",
+                      description="Get your inline helpdex menu.",
                 caption=app.home_tab_string,
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -87,7 +85,7 @@ async def inline_result(_, inline_query):
             )
         ],
         cache_time=1
-        )
+    )
 # get all module name
 @app.on_cmd(
     commands="uplugs",
