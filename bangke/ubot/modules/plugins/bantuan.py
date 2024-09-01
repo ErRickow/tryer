@@ -6,43 +6,41 @@ from pyrogram.types import Message
 from pyrogram.errors import BotInlineDisabled
 from bangke import app, gen
 
+async def get_help_inline(m: Message):
+    """ Mengambil hasil inline untuk menu bantuan """
+    try:
+        result = await app.get_inline_bot_results(app.bot.username, "#helpmenu")
+        if result:
+            await m.delete()
+            await app.send_inline_bot_result(
+                m.chat.id,
+                query_id=result.query_id,
+                result_id=result.results[0].id,
+                disable_notification=True,
+            )
+        else:
+            await app.send_edit(
+                "Please check if your bot's inline mode is enabled . . .",
+                delme=3,
+                text_type=["mono"]
+            )
+    except Exception as e:
+        await app.error(e)
+
 @app.on_cmd(
     commands="help",
     usage="Get your helpmenu, use plugin name as suffix to get command information.",
 )
 async def helpmenu_handler(_, m: Message):
-    """ helpmenu handler for help plugin """
-
+    """ Handler untuk menu bantuan """
     args = m.command or m.sudo_message.command or []
-    args_exists = True if len(args) > 1 else None
+    args_exists = len(args) > 1
 
     try:
         if not args_exists:
             await app.send_edit(". . .", text_type=["mono"])
-
-            # Gunakan async/await untuk memproses inline query secara asinkron
-            async def get_help_inline():
-                result = await app.get_inline_bot_results(
-                    app.bot.username, "#helpmenu"
-                )
-                if result:
-                    await m.delete()
-                    await app.send_inline_bot_result(
-                        m.chat.id,
-                        query_id=result.query_id,
-                        result_id=result.results[0].id,
-                        disable_notification=True,
-                    )
-                else:
-                    await app.send_edit(
-                        "Please check your bots inline mode is on or not . . .",
-                        delme=3,
-                        text_type=["mono"]
-                    )
-
-            # Jalankan get_help_inline secara asinkron
-            await get_help_inline()
-        elif args_exists:
+            await get_help_inline(m)
+        else:
             module_help = await app.PluginData(args[1])
             if not module_help:
                 await app.send_edit(
@@ -51,8 +49,6 @@ async def helpmenu_handler(_, m: Message):
                 )
             else:
                 await app.send_edit(f"MODULE: {args[1]}\n\n" + "".join(module_help))
-        else:
-            await app.send_edit("Try again later !", text_type=["mono"], delme=3)
     except BotInlineDisabled:
         await app.toggle_inline()
         await helpmenu_handler(_, m)
