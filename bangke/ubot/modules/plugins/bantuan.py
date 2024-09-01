@@ -5,52 +5,7 @@ from pyrogram import filters
 from pyrogram.types import Message, InlineQueryResultPhoto, InlineKeyboardMarkup
 from pyrogram.errors import BotInlineDisabled
 from bangke import app, gen
-
-@app.on_cmd(
-    commands="help",
-    usage="Get your helpmenu, use plugin name as suffix to get command information.",
-)
-async def enable_inline_mode():
-    try:
-        await app.toggle_inline()
-        print("Inline mode enabled.")
-    except BotInlineDisabled:
-        print("Inline mode is still disabled. Please check your settings.")
-
-async def helpmenu_handler(_, m: Message):
-    """ helpmenu handler for help plugin """
-
-    args = m.command or m.sudo_message.command or []
-
-    try:
-        if len(args) <= 1:
-            await app.send_edit(". . .")
-            result = await app.get_inline_bot_results(app.bot.username, "#help")
-            print("Result:", result) 
-            if result and result.results:
-                await m.delete()
-                await app.send_inline_bot_result(
-                    m.chat.id,
-                    query_id=result.query_id,
-                    result_id=result.results[0].id,
-                    disable_notification=True,
-                )
-            else:
-                await app.send_edit(
-                    "No results found. Please check if your bot's inline mode is correctly configured.",
-                    delme=3
-                )
-        else:
-            module_help = await app.PluginData(args[1])
-            if not module_help:
-                await app.send_edit(
-                    f"Invalid plugin name specified, use {app.Trigger()[0]}uplugs to get list of plugins",
-                    delme=3
-                )
-            else:
-                await app.send_edit(f"MODULE: {args[1]}\n\n" + "".join(module_help))
-    except Exception as e:
-        await app.error(e)
+# ... Your other functions (like app.PluginData) ...
 
 @app.bot.on_inline_query(filters.user(app.AllUsersId))
 async def inline_result(_, inline_query):
@@ -88,6 +43,32 @@ async def inline_result(_, inline_query):
             ],
             cache_time=1
         )
+
+@app.on_cmd(
+    commands="help",
+    usage="Get your helpmenu, use plugin name as suffix to get command information.",
+)
+async def helpmenu_handler(_, m: Message):
+    """Handles the /help command."""
+    
+    args = m.command or m.sudo_message.command or []
+
+    if len(args) <= 1:
+        await m.reply(
+            "Please specify the plugin you want help with, or use the inline mode by typing '@your_bot_username #help'."
+        )
+        return
+
+    module_help = await app.PluginData(args[1])
+    if not module_help:
+        await m.reply(f"Invalid plugin name specified, use {app.Trigger()[0]}uplugs to get list of plugins")
+    else:
+        await m.reply(f"MODULE: {args[1]}\n\n" + "".join(module_help))
+
+# ... rest of your bot code ...
+
+
+
 # get all module name
 @app.on_cmd(
     commands="uplugs",
