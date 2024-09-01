@@ -30,7 +30,7 @@ async def coheres_(c: Client, message: Message):
             )
             return
         response = co.chat(
-            prompt=prompt,
+            text=prompt,
             model="command-r-plus"
         )
         output = response.text
