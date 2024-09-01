@@ -54,8 +54,8 @@ async def mistralai_(client: Client, message: Message):
         else:
             await message.reply_text(output)
     except Exception as e:
-        LOGS.error(str(e))
-        return await message.reply_text(str(e))
+        # Kirim pesan kesalahan ke pengguna
+        await message.reply_text(f"Terjadi kesalahan: {str(e)}") 
 
 @app.on_update(
     handler_type=HandlerType.MESSAGE,
