@@ -25,7 +25,8 @@ async def helpmenu_handler(_, m: Message):
             await app.send_edit(". . .", text_type=["mono"])
             result = await app.get_inline_bot_results(
                 app.bot.username,
-                "#helpmenu"
+                "#helpmenu",
+                chat_id=m.chat.id
             )
             if result:
                 await m.delete()
