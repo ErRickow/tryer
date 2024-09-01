@@ -60,7 +60,7 @@ async def mistralai_(client: Client, message: Message):
 @app.on_update(
     handler_type=HandlerType.MESSAGE,
     filters=filters.gen(
-        commands="ai",
+        commands="ask",
         usage="tanya dengan ai."
     )
 )
