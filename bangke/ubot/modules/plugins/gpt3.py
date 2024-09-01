@@ -29,7 +29,7 @@ headers = {
 @app.on_update(
     handler_type=HandlerType.MESSAGE,
     filters=filters.gen(
-        commands="ask",
+        commands="gpt3",
         usage="tanya dengan ai."
     )
 )
