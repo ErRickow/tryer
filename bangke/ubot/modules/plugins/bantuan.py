@@ -57,46 +57,37 @@ async def inline_result(_, inline_query):
     emoji = app.HelpEmoji or "•"
 
     if query.startswith("#help"):
-        result = await app.get_inline_bot_results(app.bot.username, "#help")
-        if result and result.results:
-            await inline_query.answer(
-                results=[
-                    InlineQueryResultPhoto(
-                        photo_url=app.BotPic,
-                        title="Tron Inline helpdex menu",
-                        description="Get your inline helpdex menu.",
-                        caption=app.home_tab_string,
-                        reply_markup=InlineKeyboardMarkup(
-                            [
-                                app.BuildKeyboard(
-                                    (
-                                        [f"{emoji} Settings {emoji}", "settings-tab"],
-                                        [f"{emoji} Plugins {emoji}", "plugins-tab"]
-                                    )
-                                ),
-                                app.BuildKeyboard(
-                                    (
-                                        [f"{emoji} Extra {emoji}", "extra-tab"],
-                                        [f"{emoji} Stats {emoji}", "stats-tab"]
-                                    )
-                                ),
-                                app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
-                                app.BuildKeyboard((
-                                    [f"{emoji} Back {emoji}", "back-tab"]
-                                ))
-                            ]
-                        )
-                    )
-                ],
-                cache_time=0
+        emoji = app.HelpEmoji or "•"
+
+        await inline_query.answer(
+        results=[
+            InlineQueryResultPhoto(
+                photo_url=app.BotPic,
+                title="Tron Inline helpdex menu",
+                description="Get your inline helpdex menu.",
+                caption=app.home_tab_string,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        app.BuildKeyboard(
+                            (
+                                [f"{emoji} Settings {emoji}", "settings-tab"],
+                                [f"{emoji} Plugins {emoji}", "plugins-tab"]
+                            )
+                        ),
+                        app.BuildKeyboard(
+                            (
+                                [f"{emoji} Extra {emoji}", "extra-tab"],
+                                [f"{emoji} Stats {emoji}", "stats-tab"]
+                            )
+                        ),
+                        app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
+                        app.BuildKeyboard(([["Close", "close-tab"]]))
+                    ]
+                )
             )
-        else:
-            await inline_query.answer(
-                results=[],
-                cache_time=0,
-                switch_pm_text="Inline mode is disabled",
-                switch_pm_parameter="help"
-            )
+        ],
+        cache_time=1
+        )
 # get all module name
 @app.on_cmd(
     commands="uplugs",
