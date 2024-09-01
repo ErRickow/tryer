@@ -20,7 +20,7 @@ async def helpmenu_handler(_, m: Message):
             await app.send_edit(". . .")
 
             # Mengambil hasil inline query
-            result = await app.get_inline_bot_results(app.bot.username, "#helpmenu")
+            result = await app.get_inline_bot_results(app.bot.username, "#help")
             if result:
                 await m.delete()
                 await app.send_inline_bot_result(
@@ -55,7 +55,7 @@ async def inline_result(_, inline_query):
     query = inline_query.query
     emoji = app.HelpEmoji or "•"
 
-    if query.startswith("#helpmenu"):
+    if query.startswith("#help"):
         await inline_query.answer(
             results=[
                 InlineQueryResultPhoto(
