@@ -7,6 +7,14 @@ from bangke import app
 from bangke.core import filters
 from bangke.core.enums import HandlerType
 
+async def chatgptold(messagestr):
+    url = "https://randydev-ryuzaki-api.hf.space/ryuzaki/chatgpt-old"
+    payload = {"query": messagestr}
+    response = requests.post(url, json=payload)
+    if response.status_code != 200:
+        return None
+    return response.json()
+
 @app.on_update(
     handler_type=HandlerType.MESSAGE,
     filters=filters.gen(
