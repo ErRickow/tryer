@@ -25,11 +25,11 @@ async def ai(client: Client, message: Message):
 # Periksa apakah permintaan berhasil
   if response.status_code == 200:
     # Respons berisi daftar hasil pencarian
-  results = response.json()["results"]
+    results = response.json()["results"]
 
     # Cetak hasil pencarian
     for result in results:
         await message.reply_text(f"**{result['title']}**\n{result['description']}\n{result['text']}")
-else:
+  else:
     # Ada kesalahan dengan permintaan
     await message.reply_text("Terjadi kesalahan saat mengambil hasil pencarian.")
