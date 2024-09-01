@@ -23,7 +23,7 @@ async def ai(client: Client, message: Message):
 
     # Buat permintaan GET ke API
     url = "https://api.botcahx.eu.org/api/search/blackbox-chat"
-    params = {"text": text, "apikey": "LwulPck3"}
+    params = {"text": text, "apikey": "YOUR_API_KEY"}
     response = requests.get(url, params=params)
 
     # Periksa apakah permintaan berhasil
