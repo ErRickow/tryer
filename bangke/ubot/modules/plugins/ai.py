@@ -10,22 +10,27 @@ from bangke.core.enums import HandlerType
 @app.on_update(
     handler_type=HandlerType.MESSAGE,
     filters=filters.gen(
-        commands="anu",
+        commands="ask",
         usage="tanya dengan ai."
     )
 )
 async def ai(client: Client, message: Message):
   text = "Halo dunia"
   api_key = "LwulPck3"
-# Buat permintaan GET ke API
+
+  # Buat permintaan GET ke API
   url = "https://api.botcahx.eu.org/api/search/blackbox-chat"
   params = {"text": text, "apikey": api_key}
   response = requests.get(url, params=params)
 
-# Periksa apakah permintaan berhasil
+  # Periksa apakah permintaan berhasil
   if response.status_code == 200:
     # Respons berisi daftar hasil pencarian
-    results = response.json()["results"]
+    try:
+      results = response.json()["results"]
+    except KeyError:
+      await message.reply_text("Terjadi kesalahan saat mengambil hasil pencarian.")
+      return
 
     # Cetak hasil pencarian
     for result in results:
