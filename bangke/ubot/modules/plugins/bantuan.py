@@ -62,30 +62,30 @@ async def inline_result(_, inline_query):
                 InlineQueryResultPhoto(
                     photo_url=app.BotPic,
                     title="Tron Inline helpdex menu",
-                      description="Get your inline helpdex menu.",
-                caption=app.home_tab_string,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        app.BuildKeyboard(
-                            (
-                                [f"{emoji} Settings {emoji}", "settings-tab"],
-                                [f"{emoji} Plugins {emoji}", "plugins-tab"]
-                            )
-                        ),
-                        app.BuildKeyboard(
-                            (
-                                [f"{emoji} Extra {emoji}", "extra-tab"],
-                                [f"{emoji} Stats {emoji}", "stats-tab"]
-                            )
-                        ),
-                        app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
-                        app.BuildKeyboard(([["Close", "close-tab"]]))
-                    ]
+                    description="Get your inline helpdex menu.",
+                    caption=app.home_tab_string,
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            app.BuildKeyboard(
+                                (
+                                    [f"{emoji} Settings {emoji}", "settings-tab"],
+                                    [f"{emoji} Plugins {emoji}", "plugins-tab"]
+                                )
+                            ),
+                            app.BuildKeyboard(
+                                (
+                                    [f"{emoji} Extra {emoji}", "extra-tab"],
+                                    [f"{emoji} Stats {emoji}", "stats-tab"]
+                                )
+                            ),
+                            app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
+                            app.BuildKeyboard(([["Close", "close-tab"]]))
+                        ]
+                    )
                 )
-            )
-        ],
-        cache_time=1
-    )
+            ],
+            cache_time=1
+        )
 # get all module name
 @app.on_cmd(
     commands="uplugs",
