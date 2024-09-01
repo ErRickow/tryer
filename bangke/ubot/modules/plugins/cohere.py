@@ -10,8 +10,6 @@ from bangke import app
 from bangke.core import filters
 from bangke.core.enums import HandlerType
 
-API_KEY=hPZY8Tf8TXUZRK3jzuOZyz0atWR9q7IzywrK4hTQ
-
 @app.on_update(
     handler_type=HandlerType.MESSAGE,
     filters=filters.gen(
@@ -20,7 +18,7 @@ API_KEY=hPZY8Tf8TXUZRK3jzuOZyz0atWR9q7IzywrK4hTQ
     )
 )
 async def coheres_(c: Client, message: Message):
-    co = cohere.Client(api_key=API_KEY)
+    co = cohere.Client(api_key=hPZY8Tf8TXUZRK3jzuOZyz0atWR9q7IzywrK4hTQ)
     try:
         if len(message.command) > 1:
             prompt = message.text.split(maxsplit=1)[1]
