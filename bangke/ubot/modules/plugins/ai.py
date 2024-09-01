@@ -5,6 +5,14 @@ from pyrogram.types import Message
 from bangke import app
 from bangke.core import filters
 from bangke.core.enums import HandlerType
+
+@app.on_update(
+    handler_type=HandlerType.MESSAGE,
+    filters=filters.gen(
+        commands="ask",
+        usage="tanya dengan ai."
+    )
+)
 # Tentukan teks yang ingin Anda cari
 text = "Halo dunia"
 
