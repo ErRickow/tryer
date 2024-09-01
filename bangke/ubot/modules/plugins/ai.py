@@ -1,4 +1,5 @@
 import requests
+import json
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
@@ -24,13 +25,11 @@ async def ai(client: Client, message: Message):
 # Periksa apakah permintaan berhasil
   if response.status_code == 200:
     # Respons berisi daftar hasil pencarian
-    results = response.json()["results"]
+  results = response.json()["results"]
 
     # Cetak hasil pencarian
     for result in results:
-        print(result["title"])
-        print(result["description"])
-        print(result["text"])
+        await message.reply_text(f"**{result['title']}**\n{result['description']}\n{result['text']}")
 else:
     # Ada kesalahan dengan permintaan
-    print("Terjadi kesalahan saat mengambil hasil pencarian.")
+    await message.reply_text("Terjadi kesalahan saat mengambil hasil pencarian.")
