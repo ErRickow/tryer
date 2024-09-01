@@ -49,7 +49,6 @@ async def helpmenu_handler(_, m: Message):
     except Exception as e:
         await app.error(e)
 
-
 @app.bot.on_inline_query(filters.user(app.AllUsersId))
 async def inline_result(_, inline_query):
     print(inline_query)
@@ -80,13 +79,12 @@ async def inline_result(_, inline_query):
                             ),
                             app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
                             app.BuildKeyboard(([["Close", "close-tab"]]))
-]
-)
-)
-],
-cache_time=1
-)
-
+                        ]
+                    )
+                )
+            ],
+            cache_time=1
+        )
 # get all module name
 @app.on_cmd(
     commands="uplugs",
