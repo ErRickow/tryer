@@ -22,7 +22,7 @@ async def ai(client: Client, message: Message):
   response = requests.get(url, params=params)
 
 # Periksa apakah permintaan berhasil
-if response.status_code == 200:
+  if response.status_code == 200:
     # Respons berisi daftar hasil pencarian
     results = response.json()["results"]
 
