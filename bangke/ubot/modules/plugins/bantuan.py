@@ -10,6 +10,13 @@ from bangke import app, gen
     commands="help",
     usage="Get your helpmenu, use plugin name as suffix to get command information.",
 )
+async def enable_inline_mode():
+    try:
+        await app.toggle_inline()
+        print("Inline mode enabled.")
+    except BotInlineDisabled:
+        print("Inline mode is still disabled. Please check your settings.")
+
 async def helpmenu_handler(_, m: Message):
     """ helpmenu handler for help plugin """
 
@@ -18,10 +25,8 @@ async def helpmenu_handler(_, m: Message):
     try:
         if len(args) <= 1:
             await app.send_edit(". . .")
-
-            # Mengambil hasil inline query
             result = await app.get_inline_bot_results(app.bot.username, "#help")
-            print("Result:", result)  # Debugging
+            print("Result:", result) 
             if result and result.results:
                 await m.delete()
                 await app.send_inline_bot_result(
@@ -44,12 +49,9 @@ async def helpmenu_handler(_, m: Message):
                 )
             else:
                 await app.send_edit(f"MODULE: {args[1]}\n\n" + "".join(module_help))
-    except BotInlineDisabled:
-        await app.toggle_inline()
-        await helpmenu_handler(_, m)
     except Exception as e:
         await app.error(e)
-        
+
 @app.bot.on_inline_query(filters.user(app.AllUsersId))
 async def inline_result(_, inline_query):
     print(inline_query)
