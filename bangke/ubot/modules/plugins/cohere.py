@@ -48,4 +48,3 @@ async def coheres_(c: Client, message: Message):
             await message.reply_text(output, disable_web_page_preview=True)
     except Exception as e:
         await message.reply_text(f"An error occurred: {e}")
-```
