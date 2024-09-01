@@ -6,9 +6,19 @@ import cohere
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
+from bangke import app
+from bangke.core import filters
+from bangke.core.enums import HandlerType
+
 API_KEY=hPZY8Tf8TXUZRK3jzuOZyz0atWR9q7IzywrK4hTQ
 
-@Akeno(filters.command("cohere", CMD_HANDLER) & filters.me)
+@app.on_update(
+    handler_type=HandlerType.MESSAGE,
+    filters=filters.gen(
+        commands="cohere",
+        usage="tanya dengan ai."
+    )
+)
 async def coheres_(c: Client, message: Message):
     co = cohere.Client(api_key=API_KEY)
     try:
