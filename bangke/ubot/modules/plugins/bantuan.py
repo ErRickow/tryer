@@ -21,6 +21,7 @@ async def helpmenu_handler(_, m: Message):
 
             # Mengambil hasil inline query
             result = await app.get_inline_bot_results(app.bot.username, "#help")
+            print("Result:", result)  # Debugging
             if result and result.results:
                 await m.delete()
                 await app.send_inline_bot_result(
@@ -31,7 +32,7 @@ async def helpmenu_handler(_, m: Message):
                 )
             else:
                 await app.send_edit(
-                    "Please check if your bot's inline mode is on . . .",
+                    "No results found. Please check if your bot's inline mode is correctly configured.",
                     delme=3
                 )
         else:
@@ -48,8 +49,7 @@ async def helpmenu_handler(_, m: Message):
         await helpmenu_handler(_, m)
     except Exception as e:
         await app.error(e)
-
-
+        
 @app.bot.on_inline_query(filters.user(app.AllUsersId))
 async def inline_result(_, inline_query):
     print(inline_query)
