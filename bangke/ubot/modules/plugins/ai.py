@@ -14,30 +14,28 @@ from bangke.core.enums import HandlerType
         usage="tanya dengan ai."
     )
 )
-async def ai(client: Client, message: Message):
+async def chatgpt_old_(client: Client, message: Message):
     if len(message.command) > 1:
-        text = message.text.split(maxsplit=1)[1]
+        prompt = message.text.split(maxsplit=1)[1]
+    elif message.reply_to_message:
+        prompt = message.reply_to_message.text
     else:
-        await message.reply_text("Ketik sesuatu untuk ditanyakan!")
-        return
-
-    # Buat permintaan POST ke API
-    url = "https://randydev-ryuzaki-api.hf.space/ryuzaki/chatgpt-old"
-    headers = {"Content-Type": "application/json"}
-    data = {"message": text}
-    response = requests.post(url, headers=headers, json=data)
-
-    # Periksa apakah permintaan berhasil
-    if response.status_code == 200:
-        # Respons berisi jawaban dari ChatGPT
-        try:
-            answer = response.json()["response"]
-        except KeyError:
-            await message.reply_text("Terjadi kesalahan saat mengambil jawaban.")
-            return
-
-        # Kirim jawaban ke pengguna
-        await message.reply_text(answer)
-    else:
-        # Ada kesalahan dengan permintaan
-        await message.reply_text("Terjadi kesalahan saat mengambil jawaban.")
+        return await message.reply_text("Give ask from CHATGPT-3")
+    try:
+        messager = await chatgptold(prompt)
+        if messager is None:
+            return await message.reply_text("No response")
+        output = messager["randydev"].get("message")
+        if len(output) > 4096:
+            with open("chat.txt", "w+", encoding="utf8") as out_file:
+                out_file.write(output)
+            await message.reply_document(
+                document="chat.txt",
+                disable_notification=True
+            )
+            os.remove("chat.txt")
+        else:
+            await message.reply_text(output)
+    except Exception as e:
+        LOGS.error(str(e))
+        return await message.reply_text(str(e))
