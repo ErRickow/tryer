@@ -2,7 +2,7 @@
 
 import os
 from pyrogram import filters
-from pyrogram.types import Message, InlineQueryResultPhoto, InlineKeyboardMarkup, ParseMode
+from pyrogram.types import Message, InlineQueryResultPhoto, InlineKeyboardMarkup
 from pyrogram.errors import BotInlineDisabled
 from bangke import app, gen
 
