@@ -13,6 +13,7 @@ from bangke.core.enums import HandlerType
         usage="tanya dengan ai."
     )
 )
+async def ai(client: Client, message: Message):
 # Tentukan teks yang ingin Anda cari
 text = "Halo dunia"
 
