@@ -58,5 +58,5 @@ async def ping(client: Client, message: Message):
     #await asyncio.sleep(1.0)  # Menambahkan penundaan 0,1 detik
     end_time = time.time()
     speed = end_time - start_time * 1000
-    caption = await ping_template(round(speed), uptime, app.UserMention)
+    caption = await ping_template(round(speed, 3), uptime, app.UserMention)
     await message.reply_text(caption)
