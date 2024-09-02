@@ -5,6 +5,7 @@ import sys
 import time
 
 from pyrogram.types import Message
+from pyrogram import Client
 
 from bangke import app, gen
 from bangke.core.enums import UserType
@@ -39,7 +40,7 @@ async def reboot_handler(_, m: Message):
     usage="Make your bot sleep.",
     disable_for=UserType.SUDO
 )
-async def sleep_handler(_, m: Message):
+async def sleep_handler(client: Client, m: Message):
     """ sleep handler for power plugin """
     if app.long() == 1:
         return await app.send_edit("Berikan angka juga kontol. . .")
@@ -68,7 +69,7 @@ async def sleep_handler(_, m: Message):
                 suffix = formats[x]
                 break
 
-        await app.send_edit(f"Tidur selama {suffix} . . .", delme=cmd)
+        await message.reply(f"Tidur selama {suffix} . . .", delme=cmd)
         time.sleep(cmd)
     else:
         await app.send_edit("Berikan angka bukan teks ,bangsatt!! . . .", delme=3, text_type=["mono"])
