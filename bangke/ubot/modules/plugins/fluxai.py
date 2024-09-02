@@ -27,7 +27,6 @@ async def schellwithflux(args):
     commands=["fluxai", "flux"],
     usage="Get userbot response time."
 )
-
 async def imgfluxai_(client: Client, message: Message):
     question = message.text.split(" ", 1)[1] if len(message.command) > 1 else None
     if not question:
