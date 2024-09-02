@@ -56,4 +56,4 @@ async def zombies_handler(client, message):
     elif app.long() == 2 and m.command[1] != "clean":
         await a.edit_text(f"Check `{app.Trigger[0]}help tsukoyomi` to see how it works !")
     else:
-        await a.edit_text("Something went wrong, please try again later !", text_type=["mono"], delme=3)
+        await a.edit_text("Something went wrong, please try again later !")
