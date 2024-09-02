@@ -55,7 +55,7 @@ async def ping(client: Client, message: Message):
     start_time = time.time()
     uptime = get_readable_time(time.time() - StartTime)
     #img = await db.get_env(ENV_TEMPLATE.ping_pic)
-    await asyncio.sleep(0.5)  # Menambahkan penundaan 0,1 detik
+    await asyncio.sleep(1.0)  # Menambahkan penundaan 0,1 detik
     end_time = time.time()
     speed = end_time - start_time
     caption = await ping_template(round(speed * 3), uptime, app.UserMention)
