@@ -25,7 +25,7 @@ async def zombies_handler(client, message):
     if app.long() != 2:
         a = await message.reply("Checking deleted accounts . . .")
 
-        async for x in app.get_chat_members(chat_id=m.chat.id):
+        async for x in app.get_chat_members(chat_id=message.chat.id):
             if x.user.is_deleted:
                 temp_count += 1
 
@@ -44,7 +44,7 @@ async def zombies_handler(client, message):
                     continue
                 try:
                     await app.ban_chat_member(
-                        chat_id=m.chat.id,
+                        chat_id=message.chat.id,
                         user_id=x.user.id
                     )
                     count += 1
