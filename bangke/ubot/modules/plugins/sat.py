@@ -64,7 +64,7 @@ async def ping(client: Client, message: Message):
     
 @app.on_cmd(
     commands=["kping", "ah"],
-    usage="Get userbot response time."
+    usage="same things."
 )
 async def custom_ping_handler(client: Client, message: Message):
     uptime = get_readable_time((time.time() - StartTime))
