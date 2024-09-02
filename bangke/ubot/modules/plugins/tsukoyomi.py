@@ -54,6 +54,6 @@ async def zombies_handler(client, message):
         await a.edit_text(f"`WATASHIWA DONE`\n\n**Total:** `{count+admin_count}`\n**Removed:** `{count}`\n**Removed:** `{admin_count}`\n\n**Note:** `Not removed accounts can be admins or the owner`")
 
     elif app.long() == 2 and m.command[1] != "clean":
-        await app.send_edit(f"Check `{app.Trigger[0]}help zombies` to see how it works !")
+        await a.edit_text(f"Check `{app.Trigger[0]}help tsukoyomi` to see how it works !")
     else:
-        await app.send_edit("Something went wrong, please try again later !", text_type=["mono"], delme=3)
+        await a.edit_text("Something went wrong, please try again later !", text_type=["mono"], delme=3)
