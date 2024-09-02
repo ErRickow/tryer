@@ -1,5 +1,6 @@
 import io
 import time
+import os
 
 import requests
 from PIL import Image
@@ -18,8 +19,7 @@ async def schellwithflux(args):
     }
     response = requests.post(API_URL, json=payload)
     if response.status_code != 200:
-        message.reply(f"Error status {response.status_code}")
-        return None
+        return await message.reply_text(f"Error status {response.status_code}")
     return response.content
 
 
@@ -45,5 +45,4 @@ async def imgfluxai_(client: Client, message: Message):
         if os.path.exists("flux_gen.jpg"):
             os.remove("flux_gen.jpg")
     except Exception as e:
-        LOGS.error(str(e))
-        await message.edit_text(str(e))
+        await message.reply_text(f"Error: {str(e)}")
