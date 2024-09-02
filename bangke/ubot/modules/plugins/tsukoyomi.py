@@ -23,7 +23,7 @@ async def zombies_handler(client, message):
     count = 0
 
     if app.long() != 2:
-        a = await message.reply("Checking deleted accounts . . .")
+        a = await message.reply("Sedang mngendus . . .")
 
         async for x in app.get_chat_members(chat_id=message.chat.id):
             if x.user.is_deleted:
