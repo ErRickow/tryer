@@ -35,7 +35,7 @@ async def reboot_handler(_, m: Message):
 
 
 @app.on_cmd(
-    commands="sleep",
+    commands="tidur",
     usage="Make your bot sleep.",
     disable_for=UserType.SUDO
 )
