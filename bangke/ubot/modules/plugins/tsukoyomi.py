@@ -34,7 +34,7 @@ async def zombies_handler(client, message):
         else:
             await a.edit_text("KGA ADA MUSUH YANG TERDETEKSI EMHH.\nGroup bersih nan sentosa ! 😃")
 
-    elif app.long() == 2 and m.command[1] == "clean":
+    elif app.long() == 2 and message.command[1] == "sink":
         await a.edit_text("**SHINRA TENSEI** . . .")
 
         async for x in app.get_chat_members(chat_id=message.chat.id):
@@ -53,7 +53,7 @@ async def zombies_handler(client, message):
                     await app.error(e)
         await a.edit_text(f"`WATASHIWA DONE`\n\n**Total:** `{count+admin_count}`\n**Removed:** `{count}`\n**Removed:** `{admin_count}`\n\n**Note:** `Not removed accounts can be admins or the owner`")
 
-    elif app.long() == 2 and m.command[1] != "clean":
+    elif app.long() == 2 and message.command[1] != "sink":
         await a.edit_text(f"Check `{app.Trigger[0]}help tsukoyomi` to see how it works !")
     else:
         await a.edit_text("Something went wrong, please try again later !")
