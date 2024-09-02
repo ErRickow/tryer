@@ -51,7 +51,7 @@ async def zombies_handler(client, message):
                     await asyncio.sleep(0.2)
                 except Exception as e:
                     await app.error(e)
-        await app.send_edit(f"`Group clean up done !`\n\n**Total:** `{count+admin_count}`\n**Removed:** `{count}`\n**Not Removed:** `{admin_count}`\n\n**Note:** `Not removed accounts can be admins or the owner`")
+        await a.edit_text(f"`WATASHIWA DONE`\n\n**Total:** `{count+admin_count}`\n**Removed:** `{count}`\n**Removed:** `{admin_count}`\n\n**Note:** `Not removed accounts can be admins or the owner`")
 
     elif app.long() == 2 and m.command[1] != "clean":
         await app.send_edit(f"Check `{app.Trigger[0]}help zombies` to see how it works !")
