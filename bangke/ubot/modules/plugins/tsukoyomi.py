@@ -14,7 +14,7 @@ from bangke.core.enums import UserType
     usage="Check deleted accounts in chat, use clean as suffix to remove them.",
     disable_for=UserType.SUDO
 )
-async def zombies_handler(_, m: Message):
+async def zombies_handler(client, message):
     if await app.check_private():
         return
 
