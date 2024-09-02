@@ -1,3 +1,5 @@
+#this ai from randy dev aka xtdevs
+
 import requests
 import json
 from pyrogram import Client, enums, filters
