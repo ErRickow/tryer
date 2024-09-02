@@ -42,7 +42,7 @@ async def reboot_handler(_, m: Message):
 async def sleep_handler(_, m: Message):
     """ sleep handler for power plugin """
     if app.long() == 1:
-        return await app.send_edit("Berikan detik juga kontol. . .")
+        return await app.send_edit("Berikan angka juga kontol. . .")
 
     elif app.long() > 1:
         arg = m.command[1]
