@@ -35,7 +35,7 @@ def get_readable_time(seconds: int) -> str:
 
 PING_TEMPLATES = [
 """
-<blockquote>💎  <b>Speed:</b> {speed} m/s
+<blockquote>💎  <b>Speed:</b> {speed * 1000:.3f} m/s
 🇮🇩  <b>Uptime:</b> {uptime}
 👤  <b>Onwer:</b> {owner}</blockquote>
 """,
@@ -55,8 +55,8 @@ async def ping(client: Client, message: Message):
     start_time = time.time()
     uptime = get_readable_time(time.time() - StartTime)
     #img = await db.get_env(ENV_TEMPLATE.ping_pic)
-    await asyncio.sleep(1.0)  # Menambahkan penundaan 0,1 detik
+    #await asyncio.sleep(1.0)  # Menambahkan penundaan 0,1 detik
     end_time = time.time()
     speed = end_time - start_time
-    caption = await ping_template(round(speed * 3), uptime, app.UserMention)
+    caption = await ping_template(round(speed), uptime, app.UserMention)
     await message.reply_text(caption)
