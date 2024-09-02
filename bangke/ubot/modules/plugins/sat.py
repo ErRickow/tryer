@@ -61,3 +61,18 @@ async def ping(client: Client, message: Message):
     speed = end_time - start_time
     caption = await ping_template(round(speed, 3), uptime, app.UserMention)
     await pro.edit_text(caption)
+    
+@app.on_cmd(
+    commands=["kping", "ah"],
+    usage="Get userbot response time."
+)
+async def custom_ping_handler(client: Client, message: Message):
+    uptime = get_readable_time((time.time() - StartTime))
+    start = dt.now()
+    lol = await message.reply_text("**Pong!!**")
+    await asyncio.sleep(1.5)
+    end = dt.now()
+    duration = (end - start).microseconds / 1000
+    await lol.edit_text(
+        f" **Pong !!** " f"`%sms` \n" f" **Uptime** - " f"`{uptime}` " % (duration)
+    )
