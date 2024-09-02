@@ -1,5 +1,3 @@
-""" power plugin """
-
 import os
 import sys
 import time
@@ -10,8 +8,6 @@ from pyrogram import Client
 from bangke import app, gen
 from bangke.core.enums import UserType
 
-
-
 @app.on_cmd(
     commands="reboot",
     usage="Reboot your userbot.",
@@ -20,7 +16,7 @@ from bangke.core.enums import UserType
 async def reboot_handler(_, m: Message):
     """ reboot handler for power plugin """
     try:
-        msg = await app.send_edit("Restarting bot . . .", text_type=["mono"])
+        msg = await m.reply("Restarting bot . . .", quote=True, text_type=["mono"])
 
         os.execv(sys.executable, ['python'] + sys.argv)
         await app.edit_message_text(
@@ -29,10 +25,8 @@ async def reboot_handler(_, m: Message):
             "Restart completed !\nBot is alive now !"
         )
     except Exception as e:
-        await m.edit("Failed to restart userbot !", delme=2, text_type=["mono"])
+        await m.reply("Failed to restart userbot !", quote=True, delme=2, text_type=["mono"])
         await app.error(e)
-
-
 
 
 @app.on_cmd(
@@ -43,7 +37,7 @@ async def reboot_handler(_, m: Message):
 async def sleep_handler(client: Client, m: Message):
     """ sleep handler for power plugin """
     if app.long() == 1:
-        return await app.send_edit("Berikan angka juga kontol. . .")
+        return await m.reply("Berikan angka juga kontol. . .", quote=True)
 
     elif app.long() > 1:
         arg = m.command[1]
@@ -51,8 +45,9 @@ async def sleep_handler(client: Client, m: Message):
     if arg.isdigit():
         cmd = int(arg)
         if cmd > 86400:
-            return await app.send_edit(
+            return await m.reply(
                 "Sorry ye ,lu gabisa nidurin bot selama (> 86400 detik) . . .",
+                quote=True,
                 text_type=["mono"],
                 delme=3
             )
@@ -63,13 +58,13 @@ async def sleep_handler(client: Client, m: Message):
             cmd>=3600:f"{cmd//3600} jam"
             }
 
-        suffix = "`null`"
+        suffix = "null"
         for x in formats: # very small loop
             if x:
                 suffix = formats[x]
                 break
 
-        await app.send_edit(f"Tidur selama {suffix} . . .", delme=cmd)
+        await m.reply(f"Tidur selama {suffix} . . .", quote=True, delme=cmd)
         time.sleep(cmd)
     else:
-        await app.send_edit("Berikan angka bukan teks ,bangsatt!! . . .", delme=3, text_type=["mono"])
+        await m.reply("Berikan angka bukan teks ,bangsatt!! . . .", quote=True, delme=3, text_type=["mono"])
