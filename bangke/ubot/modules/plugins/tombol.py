@@ -69,7 +69,7 @@ async def sleep_handler(client: Client, m: Message):
                 suffix = formats[x]
                 break
 
-        await message.reply(f"Tidur selama {suffix} . . .", delme=cmd)
+        await app.send_edit(f"Tidur selama {suffix} . . .", delme=cmd)
         time.sleep(cmd)
     else:
         await app.send_edit("Berikan angka bukan teks ,bangsatt!! . . .", delme=3, text_type=["mono"])
