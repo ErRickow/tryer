@@ -30,9 +30,9 @@ async def zombies_handler(client, message):
                 temp_count += 1
 
         if temp_count > 0:
-            await app.send_edit(f"**Found:** `{temp_count}` Deleted accounts\nUse `{app.Trigger[0]}zombies clean` to remove them from group.")
+            await a.edit_text(f"**Terdeteksi** `{temp_count}` Musuhnya Bapak Naruto\nGunakan `{app.Trigger[0]}tsukoyomi untuk melenyapkannya dari bumi.")
         else:
-            await app.send_edit("No deleted accounts found.\nGroup is clean as Hell ! 😃", delme=3, text_type=["mono"])
+            await a.edit_text("No deleted accounts found.\nGroup is clean as Hell ! 😃")
 
     elif app.long() == 2 and m.command[1] == "clean":
         await app.send_edit("Cleaning deleted accounts . . .", text_type=["mono"])
