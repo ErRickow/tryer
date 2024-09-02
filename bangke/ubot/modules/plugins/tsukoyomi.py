@@ -37,7 +37,7 @@ async def zombies_handler(client, message):
     elif app.long() == 2 and m.command[1] == "clean":
         await a.edit_text("**SHINRA TENSEI** . . .")
 
-        async for x in app.get_chat_members(chat_id=m.chat.id):
+        async for x in app.get_chat_members(chat_id=message.chat.id):
             if x.user.is_deleted:
                 if x.status in ("administrator", "creator"):
                     admin_count += 1
