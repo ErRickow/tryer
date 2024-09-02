@@ -35,7 +35,7 @@ async def zombies_handler(client, message):
             await a.edit_text("KGA ADA MUSUH YANG TERDETEKSI EMHH.\nGroup bersih nan sentosa ! 😃")
 
     elif app.long() == 2 and m.command[1] == "clean":
-        await app.send_edit("Cleaning deleted accounts . . .", text_type=["mono"])
+        await a.edit_text("**SHINRA TENSEI** . . .")
 
         async for x in app.get_chat_members(chat_id=m.chat.id):
             if x.user.is_deleted:
