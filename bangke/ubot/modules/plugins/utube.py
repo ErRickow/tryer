@@ -23,7 +23,7 @@ def ResizeImage(path: str, size: tuple=(320, 320)):
 
 
 @app.on_cmd(
-    commands=["ytsearch", "yts"]
+    commands=["ytsearch", "yts"],
     usage="Search anything on YouTube."
 )
 async def ytsearch_handler(_, m: Message):
