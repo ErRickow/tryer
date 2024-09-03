@@ -16,7 +16,7 @@ async def _assistant(_, cb: CallbackQuery):
     try:
         await cb.edit_message_media(
             media=InputMediaPhoto(
-                media="bangke/others/resources/images/nora.png",
+                media="bangke/others/resources/gambar/cater.jpg",
                 caption=app.assistant_tab_string
             ),
             reply_markup=app.buildMarkup(
