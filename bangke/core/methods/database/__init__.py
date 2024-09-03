@@ -1,4 +1,4 @@
-#from .postgresql.afk_sql import AFKSQL
+from .postgresql.afk_sql import AFKSQL
 from .postgresql.notes_sql import NOTESSQL
 #from .postgresql.pmpermit_sql import PMPERMITSQL
 from .postgresql.dv_sql import DVSQL
@@ -8,7 +8,7 @@ from .postgresql.sudo_sql import SUDOSQL
 
 
 class Database(
-#    AFKSQL,
+    AFKSQL,
     NOTESSQL,
 #    PMPERMITSQL,
     DVSQL,
