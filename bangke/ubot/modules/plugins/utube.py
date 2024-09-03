@@ -100,7 +100,7 @@ async def ytvideoinfo_handler(_, m: Message):
 
 
 @app.on_cmd(
-    commands="ytmdl",
+    commands="ytdl",
     usage="Download video/audio from YouTube, use -a to download audio."
 )
 async def ytmdl_handler(_, m):
