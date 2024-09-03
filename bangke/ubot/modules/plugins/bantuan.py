@@ -3,7 +3,15 @@
 import os
 
 from pyrogram import filters
-from pyrogram.types import Message
+from pyrogram.types import (
+    Message,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    InlineQueryResultArticle,
+    InlineQueryResultPhoto,
+    InputTextMessageContent,
+    WebAppInfo
+)
 from pyrogram.errors import BotInlineDisabled
 
 from bangke import app, gen
