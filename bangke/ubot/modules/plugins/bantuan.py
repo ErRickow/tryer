@@ -69,7 +69,7 @@ async def helpmenu_handler(_, m: Message):
             await app.send_edit(". . .", text_type=["mono"])
             result = await app.get_inline_bot_results(
                 app.bot.username,
-                "#asu"
+                "#helpmenu"
             )
             if result and result.results:
                 await m.delete()
@@ -81,35 +81,34 @@ async def helpmenu_handler(_, m: Message):
                 )
             else:
                 await app.send_edit("Tidak ada hasil ditemukan.", text_type=["mono"])
-        else:
-            await app.send_edit(
-                "Please check your bot's inline mode is on or not . . .",
-                delme=3,
-                text_type=["mono"]
-            )
     except Exception as e:
         await app.send_edit(f"Terjadi kesalahan: {str(e)}", text_type=["mono"])
 
-    if args_exists:
-        module_help = await app.PluginData(args[1])
-        if not module_help:
-            await app.send_edit(
-                f"Invalid plugin name specified, use {app.Trigger()[0]}uplugs to get list of plugins",
-                delme=3
-            )
-        else:
-            await app.send_edit(f"MODULE: {args[1]}\n\n" + "".join(module_help))
-    else:
-        await app.send_edit("Try again later !", text_type=["mono"], delme=3)
+            else:
+                await app.send_edit(
+                    "Please check your bots inline mode is on or not . . .",
+                    delme=3,
+                    text_type=["mono"]
+                )
+        elif args_exists:
 
-    try:
-        # Handle BotInlineDisabled exception separately
-        pass  # Replace with your logic here if needed
+            module_help = await app.PluginData(args[1])
+            if not module_help:
+                await app.send_edit(
+                    f"Invalid plugin name specified, use `{app.Trigger()[0]}uplugs` to get list of plugins",
+                    delme=3
+                )
+            else:
+                await app.send_edit(f"**MODULE:** {args[1]}\n\n" + "".join(module_help))
+        else:
+            await app.send_edit("Try again later !", text_type=["mono"], delme=3)
     except BotInlineDisabled:
         await app.toggle_inline()
         await helpmenu_handler(_, m)
     except Exception as e:
         await app.error(e)
+
+
 
 
 # get all module name
