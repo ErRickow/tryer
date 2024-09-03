@@ -58,10 +58,6 @@ async def inline_result(_, inline_query):
     commands="help",
     usage="Get your helpmenu, use plugin name as suffix to get command information.",
 )
-@app.on_cmd(
-    commands="help",
-    usage="Get your helpmenu, use plugin name as suffix to get command information.",
-)
 async def helpmenu_handler(_, m: Message):
     """ helpmenu handler for help plugin """
 
