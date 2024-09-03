@@ -12,7 +12,7 @@ from bangke import app, gen
 async def inline_result(_, inline_query):
     print(inline_query)
     query = inline_query.query
-    elif query.startswith("#asu"):
+    if query.startswith("#asu"):
         emoji = app.HelpEmoji or "•"
 
         await inline_query.answer(
