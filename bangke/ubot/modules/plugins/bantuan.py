@@ -62,7 +62,7 @@ async def helpmenu_handler(_, m: Message):
     """ helpmenu handler for help plugin """
 
     args = m.command or m.sudo_message.command or []
-    args_exists = True if len(args) > 1 else None
+    args_exists = len(args) > 1
 
     try:
         if not args_exists:
@@ -71,7 +71,7 @@ async def helpmenu_handler(_, m: Message):
                 app.bot.username,
                 "#asu"
             )
-            if result:
+            if result and result.results:
                 await m.delete()
                 info = await app.send_inline_bot_result(
                     m.chat.id,
@@ -79,6 +79,10 @@ async def helpmenu_handler(_, m: Message):
                     result_id=result.results[0].id,
                     disable_notification=True,
                 )
+            else:
+                await app.send_edit("Tidak ada hasil ditemukan.", text_type=["mono"])
+    except Exception as e:
+        await app.send_edit(f"Terjadi kesalahan: {str(e)}", text_type=["mono"])
 
             else:
                 await app.send_edit(
