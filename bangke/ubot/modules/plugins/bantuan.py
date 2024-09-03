@@ -2,7 +2,7 @@
 
 import os
 
-from pyrogram import filters, ParseMode
+from pyrogram import filters
 from pyrogram.types import (
     Message,
     InlineKeyboardButton,
