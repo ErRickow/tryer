@@ -8,7 +8,42 @@ from pyrogram.errors import BotInlineDisabled
 
 from bangke import app, gen
 
+@app.bot.on_inline_query(filters.user(app.AllUsersId))
+async def inline_result(_, inline_query):
+    print(inline_query)
+    query = inline_query.query
+    elif query.startswith("#asu"):
+        emoji = app.HelpEmoji or "•"
 
+        await inline_query.answer(
+        results=[
+            InlineQueryResultPhoto(
+                photo_url=app.BotPic,
+                title="Tron Inline helpdex menu",
+                description="Get your inline helpdex menu.",
+                caption=app.home_tab_string,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        app.BuildKeyboard(
+                            (
+                                [f"{emoji} Settings {emoji}", "settings-tab"],
+                                [f"{emoji} Plugins {emoji}", "plugins-tab"]
+                            )
+                        ),
+                        app.BuildKeyboard(
+                            (
+                                [f"{emoji} Extra {emoji}", "extra-tab"],
+                                [f"{emoji} Stats {emoji}", "stats-tab"]
+                            )
+                        ),
+                        app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
+                        app.BuildKeyboard(([["Close", "close-tab"]]))
+                    ]
+                )
+            )
+        ],
+        cache_time=1
+        )
 
 @app.on_cmd(
     commands="help",
@@ -25,7 +60,7 @@ async def helpmenu_handler(_, m: Message):
             await app.send_edit(". . .", text_type=["mono"])
             result = await app.get_inline_bot_results(
                 app.bot.username,
-                "#helpmenu"
+                "#asu"
             )
             if result:
                 await m.delete()
