@@ -15,7 +15,7 @@ class Configs(
     OtherConfig,
 #    PmpermitConfig,
     UserConfig,
-#    AfkConfig,
+    AfkConfig,
 #    HerokuConfig,
 #    VcBotConfig,
     SudoUsersConfig
