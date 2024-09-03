@@ -54,57 +54,6 @@ async def inline_result(_, inline_query):
         cache_time=1
         )
 
-@app.on_cmd(
-    commands="help",
-    usage="Get your helpmenu, use plugin name as suffix to get command information.",
-)
-async def helpmenu_handler(_, m: Message):
-    """ helpmenu handler for help plugin """
-
-    args = m.command or m.sudo_message.command or []
-    args_exists = len(args) > 1
-
-    try:
-        if not args_exists:
-            await app.send_edit(". . .", text_type=["mono"])
-            result = await app.get_inline_bot_results(
-                app.bot.username,
-                "#helpmenu"
-            )
-            if result and result.results:
-                await m.delete()
-                info = await app.send_inline_bot_result(
-                    m.chat.id,
-                    query_id=result.query_id,
-                    result_id=result.results[0].id,
-                    disable_notification=True,
-                )
-            else:
-                await app.send_edit("Tidak ada hasil ditemukan.", text_type=["mono"])
-        else:
-            await app.send_edit(
-                "Please check your bots inline mode is on or not . . .",
-                delme=3,
-                text_type=["mono"]
-            )
-    except BotInlineDisabled:
-        await app.toggle_inline()
-        await helpmenu_handler(_, m)
-    except Exception as e:
-        await app.error(e)
-
-    elif args_exists:
-        module_help = await app.PluginData(args[1])
-        if not module_help:
-            await app.send_edit(
-                f"Invalid plugin name specified, use {app.Trigger()[0]}uplugs to get list of plugins",
-                delme=3
-            )
-        else:
-            await app.send_edit(f"MODULE: {args[1]}\n\n" + "".join(module_help))
-    else:
-        await app.send_edit("Try again later !", text_type=["mono"], delme=3)
-
 
 # get all module name
 @app.on_cmd(
