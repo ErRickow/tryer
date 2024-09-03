@@ -12,6 +12,7 @@ from pyrogram.types import (
     InputTextMessageContent,
     WebAppInfo
 )
+from telegraph.exceptions import RetryAfterError
 from pyrogram.errors import BotInlineDisabled
 
 from bangke import app, gen
