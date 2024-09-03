@@ -1,6 +1,6 @@
 from .alert_user import AlertUser
-from .di_cmd import OnCmd
-from .anu_update import OnUpdate
+from .on_cmd import OnCmd
+from .on_update import OnUpdate
 
 
 
