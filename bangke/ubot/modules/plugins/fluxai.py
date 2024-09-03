@@ -7,6 +7,7 @@ from PIL import Image
 from pyrogram import *
 from pyrogram import Client, filters
 from pyrogram.types import *
+from pyrogram.types import Message
 
 from bangke import app, gen
 from bangke import *
