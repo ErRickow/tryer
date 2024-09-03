@@ -1,71 +1,65 @@
 """ help plugin """
 
 import os
+
 from pyrogram import filters
-from pyrogram.types import Message, InlineQueryResultPhoto, InlineKeyboardMarkup
+from pyrogram.types import Message
 from pyrogram.errors import BotInlineDisabled
-from bangke import app, gen
-# ... Your other functions (like app.PluginData) ...
 
-@app.bot.on_inline_query(filters.user(app.AllUsersId))
-async def inline_result(_, inline_query):
-    print(inline_query)
-    query = inline_query.query
-    emoji = app.HelpEmoji or "•"
+from main import app, gen
 
-    if query.startswith("#help"):
-        await inline_query.answer(
-            results=[
-                InlineQueryResultPhoto(
-                    photo_url=app.BotPic,
-                    title="Tron Inline helpdex menu",
-                    description="Get your inline helpdex menu.",
-                    caption=app.home_tab_string,
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            app.BuildKeyboard(
-                                (
-                                    [f"{emoji} Settings {emoji}", "settings-tab"],
-                                    [f"{emoji} Plugins {emoji}", "plugins-tab"]
-                                )
-                            ),
-                            app.BuildKeyboard(
-                                (
-                                    [f"{emoji} Extra {emoji}", "extra-tab"],
-                                    [f"{emoji} Stats {emoji}", "stats-tab"]
-                                )
-                            ),
-                            app.BuildKeyboard(([["Assistant", "assistant-tab"]])),
-                            app.BuildKeyboard(([["Close", "close-tab"]]))
-                        ]
-                    )
-                )
-            ],
-            cache_time=1
-        )
+
 
 @app.on_cmd(
     commands="help",
     usage="Get your helpmenu, use plugin name as suffix to get command information.",
 )
 async def helpmenu_handler(_, m: Message):
-    """Handles the /help command."""
-    
+    """ helpmenu handler for help plugin """
+
     args = m.command or m.sudo_message.command or []
+    args_exists = True if len(args) > 1 else None
 
-    if len(args) <= 1:
-        await m.reply(
-            "Please specify the plugin you want help with, or use the inline mode by typing '@your_bot_username #help'."
-        )
-        return
+    try:
+        if not args_exists:
+            await app.send_edit(". . .", text_type=["mono"])
+            result = await app.get_inline_bot_results(
+                app.bot.username,
+                "#helpmenu"
+            )
+            if result:
+                await m.delete()
+                info = await app.send_inline_bot_result(
+                    m.chat.id,
+                    query_id=result.query_id,
+                    result_id=result.results[0].id,
+                    disable_notification=True,
+                )
 
-    module_help = await app.PluginData(args[1])
-    if not module_help:
-        await m.reply(f"Invalid plugin name specified, use {app.Trigger()[0]}uplugs to get list of plugins")
-    else:
-        await m.reply(f"MODULE: {args[1]}\n\n" + "".join(module_help))
+            else:
+                await app.send_edit(
+                    "Please check your bots inline mode is on or not . . .",
+                    delme=3,
+                    text_type=["mono"]
+                )
+        elif args_exists:
 
-# ... rest of your bot code ...
+            module_help = await app.PluginData(args[1])
+            if not module_help:
+                await app.send_edit(
+                    f"Invalid plugin name specified, use `{app.Trigger()[0]}uplugs` to get list of plugins",
+                    delme=3
+                )
+            else:
+                await app.send_edit(f"**MODULE:** {args[1]}\n\n" + "".join(module_help))
+        else:
+            await app.send_edit("Try again later !", text_type=["mono"], delme=3)
+    except BotInlineDisabled:
+        await app.toggle_inline()
+        await helpmenu_handler(_, m)
+    except Exception as e:
+        await app.error(e)
+
 
 
 
@@ -78,7 +72,7 @@ async def uplugs_handler(_, m: Message):
     """ uplugs handler for help plugin """
     store = []
     store.clear()
-    for x in os.listdir("bangke/ubot/modules/plugins/"):
+    for x in os.listdir("main/userbot/modules/plugins/"):
         if not x in ["__pycache__", "__init__.py"]:
             store.append(x + "\n")
 
@@ -96,7 +90,7 @@ async def aplugs_handler(_, m: Message):
     """ aplugs handler for help plugin """
     store = []
     store.clear()
-    for x in os.listdir("bangke/assistant/modules/plugins/"):
+    for x in os.listdir("main/assistant/modules/plugins/"):
         if not x in ["__pycache__", "__init__.py"]:
             store.append(x + "\n")
 
