@@ -44,4 +44,4 @@ async def imgfluxai_(client: Client, message: Message):
         if os.path.exists("flux_gen.jpg"):
             os.remove("flux_gen.jpg")
     except Exception as e:
-        await message.reply_text(f"Error: {str(e)}")
+        await message.edit_text(str(e))
