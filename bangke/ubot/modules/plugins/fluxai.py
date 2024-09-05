@@ -1,17 +1,4 @@
-import io
-import time
-import os
-
-import requests
-from PIL import Image
-from pyrogram import *
-from pyrogram import Client, filters
-from pyrogram.types import *
-
-from bangke import app, gen
-from bangke import *
-
-async def schellwithflux(args):
+async def schellwithflux(message, args):
     API_URL = "https://randydev-ryuzaki-api.hf.space/api/v1/akeno/fluxai"
     payload = {
         "user_id": 1191668125,  # Please don't edit here
@@ -32,7 +19,7 @@ async def imgfluxai_(client: Client, message: Message):
     if not question:
         return await message.reply_text("Please provide a question for Flux.")
     try:
-        image_bytes = await schellwithflux(question)
+        image_bytes = await schellwithflux(message, question)  # Pass message here
         if image_bytes is None:
             return await message.reply_text("Failed to generate an image.")
         pro = await message.reply_text("Generating image, please wait...")
